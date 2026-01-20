@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #805AF5 0%, #CD99FF 100%);
+  }
+
+  .btn-gradient:hover {
+    filter: brightness(0.95);
+  }
+
+  .auth-primary-btn {
+    @apply h-40 w-full rounded-md  text-white;
+    background: linear-gradient(90deg, var(--btn-grad-from) 0%, var(--btn-grad-to) 100%);
+  }
+
+
+  .auth-primary-btn:hover {
+    filter: brightness(0.95);
+  }
+
+  .auth-page {
+    @apply w-full flex justify-center px-4 py-20;
+  }
+
+  .auth-bg {
+    @apply bg-white;
+  }
+
+  .auth-card {
+    @apply w-full max-w-[440px] rounded-xl border bg-white shadow-lg;
+  }
+
+  .auth-title {
+    @apply text-center text-3xl font-semibold text-black;
+  }
+
+  .auth-subtitle {
+    @apply text-center text-sm text-gray-500 leading-5;
+  }
+
+  .auth-label {
+    @apply text-lg font-medium text-gray-900;
+  }
+
+  .auth-input {
+    @apply h-10;
+  }
+
+  .auth-link {
+    @apply text-secondary hover:underline;
+  }
+
+  .auth-helper {
+    @apply text-xs text-gray-500;
+  }
+
+  .auth-divider {
+    @apply my-4 h-px w-full bg-gray-200;
+  }
+}
+
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* ✅ Primary = #805AF5 */
+    --primary: 255 89% 66%;
+    --primary-foreground: 0 0% 100%;
+
+    /* ✅ Secondary = #2DA5F3 */
+    --secondary: 204 89% 56%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+
+    /* ✅ ring should match primary */
+    --ring: 255 89% 66%;
+
+    --radius: 0.5rem;
+
+    /* gradient helper variables */
+    --btn-grad-from: #805AF5;
+    --btn-grad-to: #CD99FF;
+  }
+}
