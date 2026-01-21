@@ -46,9 +46,10 @@ export default function SignUp() {
   });
 
   const acceptTerms = watch("acceptTerms");
-
+  const onGoogle = async () => {
+    console.log("Google login");
+  };
   const onSubmit = async (values: FormValues) => {
-    // TODO: integrate API here
     console.log(values);
 
     navigate("/login");
@@ -58,8 +59,8 @@ export default function SignUp() {
     <AuthShell>
       <AuthCard title="Sign Up">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            <Label className="auth-label" htmlFor="email">
+          <div className="space-y-1">
+            <Label className="auth-label text-base" htmlFor="email">
               Email Address
             </Label>
             <Input
@@ -71,8 +72,8 @@ export default function SignUp() {
             {errors.email?.message ? <p className="text-xs text-red-600">{errors.email.message}</p> : null}
           </div>
 
-          <div className="space-y-2">
-            <Label className="auth-label" htmlFor="password">
+          <div className="space-y-1">
+            <Label className="auth-label text-base" htmlFor="password">
               Password
             </Label>
             <PasswordField
@@ -84,8 +85,8 @@ export default function SignUp() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label className="auth-label" htmlFor="confirmPassword">
+          <div className="space-y-1">
+            <Label className="auth-label text-base" htmlFor="confirmPassword">
               Confirm Password
             </Label>
             <PasswordField
@@ -96,19 +97,20 @@ export default function SignUp() {
             />
           </div>
 
-          <div className="flex items-start gap-2 pt-1">
+          <div className="flex items-start gap-2 pt-2">
             <Checkbox
               id="acceptTerms"
               checked={!!acceptTerms}
               onCheckedChange={(v) => setValue("acceptTerms", Boolean(v))}
+              className="h-5 w-5 shrink-0 mt-[8px]"
             />
-            <Label htmlFor="acceptTerms" className="text-sm text-gray-700 leading-5">
+            <Label htmlFor="acceptTerms" className="md:text-base text-gray-700 leading-5">
               By Creating an Account, I accept the{" "}
-              <a className="auth-link" href="#" onClick={(e) => e.preventDefault()}>
+              <a className="auth-link text-primary" href="#" onClick={(e) => e.preventDefault()}>
                 Terms and Conditions
               </a>{" "}
               and agree with{" "}
-              <a className="auth-link" href="#" onClick={(e) => e.preventDefault()}>
+              <a className="auth-link text-primary" href="#" onClick={(e) => e.preventDefault()}>
                 Privacy Policies
               </a>
               .
@@ -117,12 +119,33 @@ export default function SignUp() {
           {errors.acceptTerms?.message ? <p className="text-xs text-red-600">{errors.acceptTerms.message}</p> : null}
 
           <Button type="submit" className="auth-primary-btn h-12 text-lg" disabled={isSubmitting}>
-            {isSubmitting ? "Creating..." : "Sign In"}
+            {isSubmitting ? "Creating..." : "Sign Up"}
           </Button>
+          {/* Divider */}
+          <div className="flex items-center gap-3 pt-1">
+            <div className="h-px flex-1 bg-gray-200" />
+            <span className="text-sm text-gray-500">Or</span>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
 
-          <div className="text-center text-sm text-gray-600">
+          {/* Google */}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onGoogle}
+            className="h-12 w-full rounded-xl border border-gray-100 bg-white text-base font-semibold hover:bg-gray-50 hover:text-black"
+          >
+            <img
+              src="/google.svg"
+              alt="Google"
+              className="mr-3 h-5 w-5"
+              loading="lazy"
+            />
+            Continue with Google
+          </Button>
+          <div className="text-center md:text-lg pt-2">
             Already have an account?{" "}
-            <Link to="/login" className="auth-link">
+            <Link to="/login" className="auth-link text-primary">
               Sign In here
             </Link>
           </div>
