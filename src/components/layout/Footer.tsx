@@ -1,15 +1,74 @@
-export default function Footer() {
-  return (
-    <footer className="w-full bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-6">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-gray-500">© {new Date().getFullYear()} Vinony. All rights reserved.</p>
+import { Link } from "react-router-dom";
+import { FOOTER_SECTIONS } from "@/constants/footer";
+import type { FooterLink } from "@/types/footer";
 
-          <div className="flex items-center gap-4 text-sm text-gray-600">
-            <a href="/privacy" className="hover:text-[#805AF5]">Privacy</a>
-            <a href="/terms" className="hover:text-[#805AF5]">Terms</a>
-            <a href="/contact" className="hover:text-[#805AF5]">Contact</a>
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const base =
+    "text-sm md:text-base text-accent hover:text-white/70 transition-colors";
+
+  if (link.external) {
+    return (
+      <a
+        href={link.to}
+        target="_blank"
+        rel="noreferrer"
+        className={base}
+      >
+        {link.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={link.to} className={base}>
+      {link.label}
+    </Link>
+  );
+}
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="w-full bg-[#0B0B0F] text-white">
+      <div className=" px-40 py-14">
+        <div className="grid gap-10 md:grid-cols-5">
+          <div className="md:col-span-1">
+            <h3 className="text-xl font-semibold text-white">Vinony</h3>
+            <p className="mt-3 max-w-[120px] text-sm leading-6 text-white/60">
+              All AI models. One subscription.
+            </p>
           </div>
+
+          <div className="md:col-span-4">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+              {FOOTER_SECTIONS.map((section) => (
+                <div key={section.title}>
+                  <p className="text-sm md:text-base font-semibold text-white/90">
+                    {section.title}
+                  </p>
+
+                  <ul className="mt-4 space-y-3">
+                    {section.links.map((l) => (
+                      <li key={`${section.title}-${l.to}`}>
+                        <FooterNavLink link={l} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="mt-12 h-px w-full bg-white/10" />
+
+        {/* Bottom */}
+        <div className="mt-6 flex items-center justify-center">
+          <p className="text-sm text-accent">
+            © {year} Vinony. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

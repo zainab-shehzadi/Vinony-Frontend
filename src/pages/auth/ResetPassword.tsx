@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,9 +32,9 @@ export default function ResetPassword() {
     resolver: zodResolver(schema),
     defaultValues: { password: "", confirmPassword: "" },
   });
+  const navigate = useNavigate();
 
   const onSubmit = async (values: FormValues) => {
-    // TODO: integrate API to reset password (token in URL, etc.)
     console.log(values);
   };
 
@@ -42,11 +42,11 @@ export default function ResetPassword() {
     <AuthShell>
       <AuthCard
         title="Reset Password"
-        subtitle="Duis sagittis molestie tellus, at eleifend sapien pellque quis. Fusce lorem nunc, fringilla sit amet nunc."
+        subtitle="Enter your email and we’ll send you a verification code to reset your password."
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            <Label className="auth-label" htmlFor="password">
+          <div className="space-y-1">
+            <Label className="auth-label text-base" htmlFor="password">
               Password
             </Label>
             <PasswordField
@@ -58,8 +58,8 @@ export default function ResetPassword() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label className="auth-label" htmlFor="confirmPassword">
+          <div className="space-y-1">
+            <Label className="auth-label text-base" htmlFor="confirmPassword">
               Confirm Password
             </Label>
             <PasswordField
@@ -70,13 +70,13 @@ export default function ResetPassword() {
             />
           </div>
 
-          <Button type="submit" className="auth-primary-btn" disabled={isSubmitting}>
+          <Button type="submit" onClick={() => navigate("/login")}  className="auth-primary-btn h-12 w-full text-lg font-semibold" disabled={isSubmitting}>
             {isSubmitting ? "Resetting..." : "Reset Password"}
           </Button>
 
-          <div className="text-center text-sm text-gray-600">
+          <div className="text-center md:text-lg text-accent pt-2">
             Remember Password?{" "}
-            <Link to="/login" className="auth-link">
+            <Link to="/login" className="auth-link text-secondary font-medium">
               Sign In
             </Link>
           </div>
