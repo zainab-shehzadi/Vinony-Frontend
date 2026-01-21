@@ -4,22 +4,16 @@
 
 @layer components {
   .btn-gradient {
-    background: linear-gradient(90deg, #805af5 0%, #cd99ff 100%);
+    background: linear-gradient(90deg, var(--btn-grad-from) 0%, var(--btn-grad-to) 100%);
   }
-
   .btn-gradient:hover {
     filter: brightness(0.95);
   }
 
   .auth-primary-btn {
-    @apply h-40 w-full rounded-md  text-white;
-    background: linear-gradient(
-      90deg,
-      var(--btn-grad-from) 0%,
-      var(--btn-grad-to) 100%
-    );
+    @apply w-full rounded-xl text-white;
+    background: linear-gradient(90deg, var(--btn-grad-from) 0%, var(--btn-grad-to) 100%);
   }
-
   .auth-primary-btn:hover {
     filter: brightness(0.95);
   }
@@ -33,7 +27,7 @@
   }
 
   .auth-card {
-    @apply w-full max-w-[440px] rounded-xl border bg-white shadow-lg;
+    @apply w-full max-w-[440px] rounded-lg border bg-white shadow-lg;
   }
 
   .auth-title {
@@ -41,11 +35,11 @@
   }
 
   .auth-subtitle {
-    @apply text-center text-sm text-gray-500 leading-5;
+    @apply text-center text-sm leading-5 text-accent; /* #818286 */
   }
 
   .auth-label {
-    @apply text-lg font-medium text-gray-900;
+    @apply text-base font-semibold leading-5 tracking-normal text-black;
   }
 
   .auth-input {
@@ -53,11 +47,11 @@
   }
 
   .auth-link {
-    @apply text-secondary hover:underline;
+    @apply text-primary hover:underline;
   }
 
   .auth-helper {
-    @apply text-xs text-gray-500;
+    @apply text-sm leading-5 text-accent;
   }
 
   .auth-divider {
@@ -76,17 +70,18 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    /* ✅ Primary = #805AF5 */
+    /* Primary = #805AF5 */
     --primary: 255 89% 66%;
     --primary-foreground: 0 0% 100%;
 
-    /* ✅ Secondary = #2DA5F3 */
+    /* Secondary = #2DA5F3 */
     --secondary: 204 89% 56%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted-foreground: 220 2% 51%;
 
+    /* Accent = #818286 */
     --accent: 220 2% 51%;
     --accent-foreground: 0 0% 100%;
 
@@ -95,14 +90,41 @@
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-
-    /* ✅ ring should match primary */
     --ring: 255 89% 66%;
 
     --radius: 0.5rem;
 
-    /* gradient helper variables */
-    --btn-grad-from: #805af5;
-    --btn-grad-to: #cd99ff;
+    /* Gradient */
+    --btn-grad-from: #805AF5;
+    --btn-grad-to: #CD99FF;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    @apply font-sans text-base leading-6 text-foreground bg-background;
+  }
+
+  h1 {
+    @apply text-3xl font-semibold leading-tight text-foreground;
+  }
+  h2 {
+    @apply text-2xl font-semibold leading-snug text-foreground;
+  }
+  h3 {
+    @apply text-xl font-semibold leading-snug text-foreground;
+  }
+  h4 {
+    @apply text-lg font-semibold leading-snug text-foreground;
+  }
+
+  p {
+    @apply text-base leading-6 text-foreground;
+  }
+
+  .text-muted {
+    @apply text-sm leading-5 text-accent;
   }
 }

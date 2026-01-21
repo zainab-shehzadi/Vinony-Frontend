@@ -10,12 +10,13 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import PublicLayout from "@/components/layout/PublicLayout";
 import DashboardLayout from "@/components/layout/Dashboard/DashboardLayout";
 import Chat from "@/pages/dashboard/chat/Chat";
+import NotFound from "@/pages/NotFound";
+import ContactUs from "@/pages/support/ContactUs";
 
-const NotFound = () => <div className="p-6">404 - Not Found</div>;
 
 export const routes: RouteObject[] = [
   {
-    element: <PublicLayout />, 
+    element: <PublicLayout />,
     children: [
       { path: "/", element: <Navigate to={PATH.HOME} replace /> },
 
@@ -23,6 +24,9 @@ export const routes: RouteObject[] = [
       { path: PATH.REGISTER, element: <SignUp /> },
       { path: PATH.FORGETPASSWORD, element: <ForgotPassword /> },
       { path: PATH.RESETPASSWORD, element: <ResetPassword /> },
+      { path: PATH.CONTACT, element: <ContactUs /> },
+      // { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
+      // { path: PATH.TERMS, element: <TermsAndConditions /> },
     ],
   },
 
