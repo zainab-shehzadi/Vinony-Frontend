@@ -4,6 +4,7 @@ export const PATH = {
   REGISTER: "/register",
   FORGETPASSWORD:"/forgot-password",
   RESETPASSWORD: "/reset-password",
+  
   // DASHBOARD: "/dashboard",
   // SIGNUP: "/signup",
   // JOBLISTING: "/jobListing",
