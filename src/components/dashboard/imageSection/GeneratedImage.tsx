@@ -14,7 +14,7 @@ const SoraImage = [
 export default function GeneratedImage() {
   return (
     <>
-      <div className={`w-full max-w-6xl px-4 overflow-y-auto`}>
+      <div className={`w-full px-4 overflow-y-auto`}>
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-xl font-semibold text-primaryDark">
             Generated Images

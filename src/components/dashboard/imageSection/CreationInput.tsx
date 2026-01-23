@@ -11,7 +11,7 @@ export default function CreationInput() {
   const [inputValue, setInputValue] = useState<string>("");
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 rounded-xl bg-white">
+    <div className="w-full  p-4 rounded-xl bg-white">
       <p className="font-bold text-[16px] text-primaryDark mb-2">Prompt</p>
 
       <div className="bg-[#F8FAFC] rounded-lg p-2 shadow-[inset_0_1px_4px_rgba(0,0,0,0.05)]">

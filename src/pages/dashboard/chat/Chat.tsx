@@ -33,12 +33,12 @@ export default function Chat() {
         )}
 
         {reqGenerate && (
-          <div className="flex-grow w-full max-w-6xl overflow-y-auto">
+          <div className="flex-grow  overflow-y-auto">
              <ChatResponse/>
           </div>
         )}
 
-        <div className={`w-full max-w-6xl ${reqGenerate ? 'mt-auto -mb-7 2xl:-mb-10 ' : 'mt-auto -mb-7 md:mt-0'}`}>
+        <div className={`w-full ${reqGenerate ? 'mt-auto -mb-7 2xl:-mb-10 ' : 'mt-auto -mb-7 md:mt-0'}`}>
           <ChatInput
             selectedModel={selectedModel}
             activeVersion={activeVersion}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Receipt,
   Settings,
@@ -24,7 +24,7 @@ interface IProp {
 const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [recentChats, setRecentChats] = useState([
+  const [recentChats, ] = useState([
     "How to be a better person",
     "Project Research Alpha",
     "UI Design Guidelines",
