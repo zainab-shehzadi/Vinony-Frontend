@@ -1,5 +1,4 @@
 import type { RouteObject } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
 import { PATH } from "../constants/paths";
 
@@ -10,21 +9,28 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import PublicLayout from "@/components/layout/PublicLayout";
 import DashboardLayout from "@/components/layout/Dashboard/DashboardLayout";
 import Chat from "@/pages/dashboard/chat/Chat";
-import NotFound from "@/pages/NotFound";
+import NotFound from "@/pages/notFound";
 import ContactUs from "@/pages/support/ContactUs";
+import LandingPage from "@/pages/landingPage/page";
+import PricingPage from "@/pages/pricing/PricingPage";
+import AIModelPage from "@/pages/aIModels/AIModel";
+import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
 
 
 export const routes: RouteObject[] = [
   {
     element: <PublicLayout />,
     children: [
-      { path: "/", element: <Navigate to={PATH.HOME} replace /> },
-
+      { path: PATH.HOME, element: <LandingPage /> },
       { path: PATH.LOGIN, element: <SignIn /> },
       { path: PATH.REGISTER, element: <SignUp /> },
       { path: PATH.FORGETPASSWORD, element: <ForgotPassword /> },
       { path: PATH.RESETPASSWORD, element: <ResetPassword /> },
       { path: PATH.CONTACT, element: <ContactUs /> },
+      { path: PATH.PRICING, element: <PricingPage /> },
+      { path: PATH.AIMODEL, element: <AIModelPage /> },
+      { path: PATH.AIMODEL_DETAIL, element: <ModelDetailPage /> },
+
       // { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
       // { path: PATH.TERMS, element: <TermsAndConditions /> },
     ],
@@ -35,9 +41,9 @@ export const routes: RouteObject[] = [
     // element: <PrivateRoute />, 
     children: [
       {
-        element: <DashboardLayout/> ,
+        element: <DashboardLayout />,
         children: [
-          { path: "/dashboard", element: <Chat/> },
+          { path: "/dashboard", element: <Chat /> },
           // { path: "/dashboard/profile", element: <Profile /> },
         ],
       },

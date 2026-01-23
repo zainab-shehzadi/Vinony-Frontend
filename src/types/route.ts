@@ -1,8 +1,8 @@
+import { PATH } from '@/constants/paths';
 import type { JSX } from 'react';
-import { routePaths } from '../constants/paths';
 
-type RouteKeys = keyof typeof routePaths;
-type RouteValues = (typeof routePaths)[RouteKeys];
+type RouteKeys = keyof typeof PATH;
+type RouteValues = (typeof PATH)[RouteKeys];
 
 export type TRoute = {
   name?: string;

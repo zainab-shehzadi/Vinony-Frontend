@@ -1,7 +1,7 @@
 // import React from 'react';
 import { 
   MessageSquare, Image, Video, Users, 
-  Receipt, Settings, ChevronDown, X, 
+  Receipt, Settings, X, 
   ArrowUpRight
 } from 'lucide-react';
 import {

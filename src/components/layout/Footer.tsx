@@ -30,12 +30,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#0B0B0F] text-white">
-      <div className=" px-40 py-14">
-        <div className="grid gap-10 md:grid-cols-5">
+    <footer className="w-full bg-[#0B0B0F] text-white mt-6 md:mt-10">
+      <div className=" px-10  lg:px-20 xl:px-40 py-14 ">
+        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-5">
           <div className="md:col-span-1">
             <h3 className="text-xl font-semibold text-white">Vinony</h3>
-            <p className="mt-3 max-w-[120px] text-sm leading-6 text-white/60">
+            <p className="mt-3 max-w-[220px] text-sm leading-6 text-white/60">
               All AI models. One subscription.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 h-px w-full bg-white/10" />
+        <div className="mt-12 h-px w-full bg-white/5" />
 
         {/* Bottom */}
         <div className="mt-6 flex items-center justify-center">

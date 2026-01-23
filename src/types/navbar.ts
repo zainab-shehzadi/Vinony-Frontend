@@ -7,7 +7,7 @@ export type NavItem = {
 
 export const NAV: NavItem[] = [
   { key: "home", label: "Home", href: "/" },
-  { key: "tools", label: "Tools", href: "/tools", hasDropdown: true },
+  { key: "tools", label: "Tools", href: "/ai-models", hasDropdown: true },
   { key: "pricing", label: "Pricing", href: "/pricing" },
   { key: "contact", label: "Contact Us", href: "/contact" },
 ];

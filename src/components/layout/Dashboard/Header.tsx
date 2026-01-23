@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
 import {
   Bell,
   ChevronDown,
-  Coins,
-  Zap,
   Menu,
   CircleDollarSign,
   CreditCard,
