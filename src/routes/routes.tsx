@@ -9,13 +9,13 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import PublicLayout from "@/components/layout/PublicLayout";
 import DashboardLayout from "@/components/layout/Dashboard/DashboardLayout";
 import Chat from "@/pages/dashboard/chat/Chat";
-import NotFound from "@/pages/notFound";
 import ContactUs from "@/pages/support/ContactUs";
 import ImageSection from "@/pages/dashboard/images/ImageSection";
 import LandingPage from "@/pages/landingPage/page";
 import PricingPage from "@/pages/pricing/PricingPage";
 import AIModelPage from "@/pages/aIModels/AIModel";
 import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
+import NotFound from "@/pages/notFound";
 
 
 export const routes: RouteObject[] = [

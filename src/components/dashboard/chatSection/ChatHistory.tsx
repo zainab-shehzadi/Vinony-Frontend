@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CircleDollarSign } from "lucide-react";
 
 // Data Type definition for Type Safety
@@ -52,7 +52,7 @@ function ChatHistory() {
   ];
 
   return (
-    <div className="w-full max-w-6xl bg-white font-sans mt-10 overflow-y-auto hide-scrollbar">
+    <div className=" bg-white font-sans mt-10 overflow-y-auto hide-scrollbar">
       <div className="flex flex-col">
         {historyData.map((item) => {
           const isActive = activeId === item.id;

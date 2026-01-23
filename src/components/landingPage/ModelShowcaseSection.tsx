@@ -1,4 +1,3 @@
-import * as React from "react";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ModelShowcaseItem } from "@/types/modelShowcase";

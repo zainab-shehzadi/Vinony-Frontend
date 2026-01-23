@@ -5,7 +5,7 @@ import { GENERATED_GROUPS } from "@/constants/aiModelData";
 
 export default function GeneratedHistory() {
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 space-y-8">
+    <div className="w-full p-6 space-y-8">
       {/* Header with Search */}
       <div className="flex items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-4 py-3">
