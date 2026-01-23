@@ -16,7 +16,7 @@ export default function DashboardLayout() {
             onClick={() => setToggle(false)}
           />
         )}
-        <div className="w-full">
+        <div className="flex flex-col flex-1 min-w-0">
           <Header setToggle={setToggle} toggle={toggle} />
           <main className="flex-1 overflow-auto">
             <Outlet />

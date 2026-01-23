@@ -44,9 +44,6 @@ const Sidebar = ({ toggle }: IProp) => {
     <div className={`fixed z-50 w-64 h-full bg-white border-r flex flex-col p-4 md:relative transform transition-transform duration-300 ease-in-out md:translate-x-0 ${toggle ? "translate-x-0" : "-translate-x-full"}`}>
       {/* Logo Section */}
       <div className="flex items-center justify-center gap-2 px-2 mt-5 mb-10">
-        {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-          <div className="w-4 h-4 bg-white rotate-45" />
-        </div> */}
         <p className="text-xl font-semibold text-primary">Logo Here</p>
       </div>
 
@@ -55,7 +52,7 @@ const Sidebar = ({ toggle }: IProp) => {
       </div>
 
       {/* Navigation with Shadcn Accordion */}
-      <nav className="flex-1 space-y-1">
+      <nav className="flex-1 space-y-1 overflow-y-auto">
         <Accordion type="single" collapsible className="w-full border-none">
           {menuItems.map((item, index) => (
             <AccordionItem value={`item-${index}`} key={index} className="border-none group">

@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
 import {
   Bell,
   ChevronDown,
-  Coins,
-  Zap,
   Menu,
   CircleDollarSign,
   CreditCard,
@@ -110,7 +107,9 @@ export default function Header({ setToggle, toggle }: IProp) {
                   <div className="text-[16px] font-semibold text-[#131316] mb-2">
                     Free
                   </div>
-                  <Progress value={3.33} className="h-1.5 mb-2 bg-slate-200 auth-primary-btn" />
+
+                  <Progress value={50} className="h-1.5 mb-4 bg-slate-100 rounded-full" />
+
                   <div className="text-sm text-accent font-normal">
                     5/150 credits left
                   </div>
