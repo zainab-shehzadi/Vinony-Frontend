@@ -1,5 +1,5 @@
 import React from "react";
-import { User, Bot, ChevronDown } from "lucide-react";
+import { Bot, ChevronDown } from "lucide-react";
 
 // Message types define kar rahe hain
 interface ChatMessage {
@@ -7,7 +7,7 @@ interface ChatMessage {
   role: "user" | "assistant";
   senderName?: string;
   time?: string;
-  content: string | string[]; // Content string bhi ho sakta hai ya points (array) bhi
+  content: string | string[];
 }
 
 const ChatResponse: React.FC = () => {
@@ -33,14 +33,10 @@ const ChatResponse: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fcfdff] p-4 md:p-10 font-sans text-slate-700">
+    <div className="min-h-screen p-4 md:p-10 font-sans text-slate-700">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Top Credits Label */}
-        <div className="flex justify-end pr-2">
-          <span className="text-[10px] font-semibold text-primary uppercase tracking-tighter">
-            4 Credits used
-          </span>
-        </div>
+
         {messages.map((msg) => (
           <>
             <div
@@ -99,12 +95,18 @@ const ChatResponse: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                /* User Message Bubble */
-                <div className="bg-white border border-slate-100 px-6 py-3 rounded-full rounded-tr-none shadow-sm max-w-[90%] md:max-w-[70%] text-right">
-                  <p className="text-[14px] md:text-[15px] text-slate-500">
-                    {msg.content}
-                  </p>
-                </div>
+                <>
+                  <div className="flex justify-end pr-2">
+                    <span className="text-[14px] font-medium text-primary tracking-tighter">
+                      4 Credits used
+                    </span>
+                  </div>
+                  <div className="bg-[#F8FAFC] border border-slate-100 px-6 py-3 rounded-full rounded-tr-none shadow-sm max-w-[90%] md:max-w-[70%] text-right">
+                    <p className="text-[14px] md:text-[15px] text-slate-500">
+                      {msg.content}
+                    </p>
+                  </div>
+                </>
               )}
             </div>
           </>
