@@ -62,27 +62,32 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+
+    /* ✅ Heading / main text: #21242D */
+    --foreground: 225 14% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 225 14% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 225 14% 15%;
 
+  
     /* Primary = #805AF5 */
     --primary: 255 89% 66%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary = #2DA5F3 */
+    /* / Secondary = #2DA5F3 / */
     --secondary: 204 89% 56%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96.1%;
-    --muted-foreground: 220 2% 51%;
 
-    /* Accent = #818286 */
-    --accent: 220 2% 51%;
+    /* ✅ Subheading / muted text: #6C7278 */
+    --muted-foreground: 220 7% 46%;
+
+    /* Accent = can keep as-is or set same as muted-foreground */
+    --accent: 220 7% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -90,41 +95,13 @@
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 255 89% 66%;
+    --ring: 270 100% 80%;
 
     --radius: 0.5rem;
 
-    /* Gradient */
+    /* / Gradient  */
     --btn-grad-from: #805AF5;
     --btn-grad-to: #CD99FF;
   }
-
-  html {
-    font-size: 16px;
-  }
-
-  body {
-    @apply font-sans text-base leading-6 text-foreground bg-background;
-  }
-
-  h1 {
-    @apply text-3xl font-semibold leading-tight text-foreground;
-  }
-  h2 {
-    @apply text-2xl font-semibold leading-snug text-foreground;
-  }
-  h3 {
-    @apply text-xl font-semibold leading-snug text-foreground;
-  }
-  h4 {
-    @apply text-lg font-semibold leading-snug text-foreground;
-  }
-
-  p {
-    @apply text-base leading-6 text-foreground;
-  }
-
-  .text-muted {
-    @apply text-sm leading-5 text-accent;
-  }
 }
+

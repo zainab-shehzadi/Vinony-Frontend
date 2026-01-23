@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Minus, Plus } from "lucide-react";
 import { VINONY_FAQS, type FaqItem } from "@/constants/faq";
+import SectionHeading from "../common/SectionHeading";
 
 type Props = {
     items?: FaqItem[];
     defaultOpenId?: string;
-    title?: string;
-    subtitle?: string;
+
 };
 
 function Icon({ open }: { open: boolean }) {
@@ -20,8 +20,6 @@ function Icon({ open }: { open: boolean }) {
 export default function VinonyFaq({
     items = VINONY_FAQS,
     defaultOpenId,
-    title = "Frequently Asked Questions",
-    subtitle = "Vinony Related Questions",
 }: Props) {
     const firstId = items[0]?.id ?? "";
     const initial = defaultOpenId ?? firstId;
@@ -35,20 +33,13 @@ export default function VinonyFaq({
     if (!items.length) return null;
 
     return (
-        <section className="w-full bg-white">
-            <div className="py-10 md:py-16 lg:py-20">
-                {/* heading */}
-                <div className="text-center">
-                    <p className="text-base md:text-lg lg:text-xl font-semibold text-primary ">
-                        {subtitle}
-                    </p>
-                    <h2 className="mt-3 text-3xl font-extrabold  md:text-5xl">
-                        {title}
-                    </h2>
-                </div>
-
-                {/* list */}
-                <div className="mt-8 md:mt-16 lg:mt-28" role="region" aria-label="Frequently asked questions">
+        <section>
+            <div className="px-2 md:px-10 pt-10 md:pt-16 lg:pt-20">
+                <SectionHeading
+                    eyebrow="Vinony Related Questions"
+                    title="Frequently Asked Questions"
+                />
+                <div className="mt-6 md:mt-10 xl:mt-24" role="region" aria-label="Frequently asked questions">
                     {items.map((item) => {
                         const isOpen = openId === item.id;
                         const btnId = `faq-btn-${item.id}`;
@@ -65,9 +56,8 @@ export default function VinonyFaq({
                                     aria-controls={panelId}
                                 >
                                     <div className="flex items-start gap-4">
-                                        {/* purple square */}
-                                        <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-primary" />
-                                        <span className="text-lg font-semibold text-gray-900 md:text-xl">
+                                        <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-primary/60" />
+                                        <span className="text-base md:text-lg lg:text-[20px] font-bold text-gray-900">
                                             {item.question}
                                         </span>
                                     </div>
@@ -80,8 +70,8 @@ export default function VinonyFaq({
                                     role="region"
                                     aria-labelledby={btnId}
                                     className={[
-                                        "overflow-hidden pl-6 pr-12 text-sm leading-7 text-gray-900 md:text-base transition-[max-height,opacity] duration-300",
-                                        isOpen ? "max-h-96 opacity-100 pt-4" : "max-h-0 opacity-0",
+                                        "overflow-hidden pl-6 pr-12 text-sm md:text-lg lg:text-[18px] font-medium leading-7 lg:max-w-4xl transition-[max-height,opacity] duration-300",
+                                        isOpen ? "max-h-96 opacity-100 lg:pt-4" : "max-h-0 opacity-0",
                                     ].join(" ")}
                                 >
                                     {item.answer}

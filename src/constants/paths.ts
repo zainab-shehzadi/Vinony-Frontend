@@ -5,6 +5,12 @@ export const PATH = {
   FORGETPASSWORD:"/forgot-password",
   RESETPASSWORD: "/reset-password",
   CONTACT:"/contact",
+  CHAT: "/dashboard",
+  IMAGE: "/dashboard/image-section"
+  PRICING: "/pricing",
+  AIMODEL:"/ai-models",
+    AIMODEL_DETAIL: "/ai-models/:slug", // detail page
+
   // DASHBOARD: "/dashboard",
   // SIGNUP: "/signup",
   // JOBLISTING: "/jobListing",

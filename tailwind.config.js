@@ -17,6 +17,8 @@ export default {
         yellow: "#FFD60A",
         blue: "#0A84FF",
         cyan: "#64D2FF",
+		    primaryDark: "#16181E",
+		    textMuted: "#475569",
 
         // ✅ shadcn-style tokens via CSS vars
         background: "hsl(var(--background))",

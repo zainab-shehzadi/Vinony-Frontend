@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
 import {
   Bell,
   ChevronDown,
-  Coins,
-  Zap,
   Menu,
   CircleDollarSign,
   CreditCard,
@@ -17,24 +14,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Progress } from "@radix-ui/react-progress";
+import { Progress } from "@/components/ui/progress";
 
-interface IProp{
-  setToggle: (val: boolean)=> void;
-  toggle: boolean
+interface IProp {
+  setToggle: (val: boolean) => void;
+  toggle: boolean;
 }
 
 export default function Header({ setToggle, toggle }: IProp) {
   return (
     <>
-      <header className="h-16 w-full border-b bg-white flex items-center justify-between px-4 md:px-8 sticky top-0 z-50">
+      <header className="h-16 w-full border-b flex items-center justify-between px-4 lg:px-6 sticky top-0 z-50">
         {/* Left Side: Workspace Title & Mobile Menu */}
         <div className="flex items-center gap-4">
           {/* Mobile Menu Button (Only visible on small screens) */}
-          <div className="md:hidden cursor-pointer font-semibold text-xl text-[#191C1F]" onClick={()=> setToggle(!toggle)}>
+          <div
+            className="lg:hidden cursor-pointer font-semibold text-xl text-primaryDark"
+            onClick={() => setToggle(!toggle)}
+          >
             <Menu className="w-6 h-6" />
           </div>
-          <h1 className="text-sm md:text-base font-semibold truncate">
+          <h1 className="text-sm lg:text-base font-semibold truncate">
             Chat Workspace
           </h1>
         </div>
@@ -42,33 +42,26 @@ export default function Header({ setToggle, toggle }: IProp) {
         {/* Right Side: Actions & Profile */}
         <div className="flex items-center gap-2 md:gap-4">
           {/* Credits Pill */}
-          <div className="hidden auth-primary-btn h-8 sm:flex sm:items-center gap-2 px-3 py-3 rounded-lg">
+          <div className="hidden auth-primary-btn h-8 sm:flex sm:items-center gap-1 px-2 py-3 rounded-lg">
             <CircleDollarSign className="w-4 h-4" />
             <span className="text-xs font-semibold">100 +</span>
           </div>
 
-          {/* Upgrade Button (Responsive) */}
-          <div className="flex items-center gap-2 border-l border-r pl-2 pr-2 md:pl-3 md:pr-3">
-            <div
-              className="text-[#131316] w-40 hidden md:flex md:justify-center gap-2 cursor-pointer"
-            >
+          <div className="flex items-center border-l border-r pl-1 pr-1">
+            <div className="text-primaryDark w-40 hidden md:flex md:justify-center gap-2 cursor-pointer">
               <CreditCard className="w-6 h-6 text-primary" />
-              <span className="text-[16px] font-medium">Upgrade plan</span>
+              <span className="text-sm md:text-[16px] font-medium">Upgrade plan</span>
             </div>
             {/* Mobile Icon only version */}
-            <div
-              className="md:hidden text-primary cursor-pointer"
-            >
+            <div className="md:hidden text-primary cursor-pointer">
               <CreditCard className="w-6 h-6 text-primary" />
             </div>
           </div>
 
           {/* Notification Bell */}
           <div className="relative">
-            <div
-              className="text-primary h-8 w-8 flex items-center justify-center relative cursor-pointer"
-            >
-              <Bell className="w-6 h-6 fill-auth-primary-btn" />
+            <div className="text-primary h-8 w-7 flex items-center justify-center relative cursor-pointer">
+              <Bell className="w-6 h-6 fill-primary" />
               <span className="bg-red-500 h-1.5 w-1.5 rounded-full absolute top-0.5 right-1"></span>
             </div>
           </div>
@@ -77,17 +70,17 @@ export default function Header({ setToggle, toggle }: IProp) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-1 rounded-lg transition-colors">
-                <Avatar className="h-8 w-8">
+                <Avatar className="h-7 w-7">
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>MS</AvatarFallback>
                 </Avatar>
-                <ChevronDown className="w-4 h-4 text-slate-400 hidden sm:block" />
+                <ChevronDown className="w-4 h-4 text-accent hidden sm:block" />
               </div>
             </DropdownMenuTrigger>
 
             <DropdownMenuContent
               align="end"
-              className="w-64 p-2 shadow-xl rounded-xl border-slate-200"
+              className="w-64 p-2 shadow-xl rounded-xl"
             >
               {/* Header Section: User Info */}
               <DropdownMenuLabel className="font-normal p-2">
@@ -97,20 +90,22 @@ export default function Header({ setToggle, toggle }: IProp) {
                     <AvatarFallback>MS</AvatarFallback>
                   </Avatar>
                   <div className="flex items-center gap-2">
-                    <div className="w-[1px] h-6 bg-slate-300" />{" "}
+                    <div className="w-[1px] h-6 bg-accent" />{" "}
                     {/* Vertical Line */}
-                    <span className="font-bold text-slate-900 text-base">
+                    <span className="font-bold text-primaryDark text-base">
                       Michael Smith
                     </span>
                   </div>
                 </div>
 
                 {/* Credit Card Section */}
-                <div className="bg-purple-50 rounded-xl p-3 border border-purple-100">
-                  <div className="text-[16px] font-semibold text-[#131316] mb-2">
+                <div className="bg-[#E9DAF8]/50 rounded-xl p-3 border border-purple-100">
+                  <div className="text-[16px] font-semibold text-primary mb-2">
                     Free
                   </div>
-                  <Progress value={3.33} className="h-1.5 mb-2 bg-slate-200 auth-primary-btn" />
+
+                  <Progress value={20} className="h-1.5 mb-4 bg-slate-100" />
+
                   <div className="text-sm text-accent font-normal">
                     5/150 credits left
                   </div>
@@ -128,7 +123,7 @@ export default function Header({ setToggle, toggle }: IProp) {
                   Terms
                 </DropdownMenuItem>
                 <DropdownMenuSeparator className="bg-slate-100 mx-1" />
- 
+
                 <DropdownMenuItem className="py-2.5 cursor-pointer text-accent font-medium focus:bg-slate-50 focus:text-[#131316]">
                   Privacy
                 </DropdownMenuItem>

@@ -1,4 +1,3 @@
-import * as React from "react";
 import type { ModelCardData } from "@/types/model";
 import { Button } from "@/components/ui/button";
 
@@ -12,17 +11,16 @@ function TagPill({ label }: { label: string }) {
 
 type Props = {
     item: ModelCardData;
-    onTry?: (id: string) => void;
+    onTry?: (slug: string) => void;
 };
 
 export default function ModelCard({ item, onTry }: Props) {
     const handleTry = () => {
-        item.onTry?.(item.id);
-        onTry?.(item.id);
+        onTry?.(item.slug);
     };
 
     return (
-        <div className="rounded-2xl border border-accent/30 bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-accent/20 bg-white p-6 shadow-md">
             {/* top row */}
             <div className="flex items-start justify-between gap-4">
                 <div>
@@ -51,11 +49,10 @@ export default function ModelCard({ item, onTry }: Props) {
                 ))}
             </div>
 
-            {/* cta */}
             <Button
                 type="button"
                 onClick={handleTry}
-                className="btn-gradient mt-6 h-12 w-full rounded-xl text-sm md:text-base lg:text-lg  font-semibold text-white"
+                className="btn-gradient mt-6 h-12 w-full rounded-xl text-sm md:text-base lg:text-lg font-semibold text-white"
             >
                 {item.ctaLabel ?? "Try Now"}
             </Button>
