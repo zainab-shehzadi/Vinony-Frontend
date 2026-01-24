@@ -12,6 +12,7 @@ import DashboardLayout from "@/components/layout/Dashboard/DashboardLayout";
 import Chat from "@/pages/dashboard/chat/Chat";
 import NotFound from "@/pages/NotFound";
 import ContactUs from "@/pages/support/ContactUs";
+import ImageSection from "@/pages/dashboard/images/ImageSection";
 
 
 export const routes: RouteObject[] = [
@@ -37,8 +38,8 @@ export const routes: RouteObject[] = [
       {
         element: <DashboardLayout/> ,
         children: [
-          { path: "/dashboard", element: <Chat/> },
-          // { path: "/dashboard/profile", element: <Profile /> },
+          { path: PATH.CHAT, element: <Chat/> },
+          { path: PATH.IMAGE, element: <ImageSection/> },
         ],
       },
     ],

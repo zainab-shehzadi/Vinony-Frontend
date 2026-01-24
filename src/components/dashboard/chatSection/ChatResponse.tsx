@@ -1,13 +1,20 @@
 import React from "react";
 import { Bot, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-// Message types define kar rahe hain
 interface ChatMessage {
   id: number;
   role: "user" | "assistant";
   senderName?: string;
   time?: string;
   content: string | string[];
+  credit?: string;
+  versions?: string[];
 }
 
 const ChatResponse: React.FC = () => {
@@ -16,69 +23,119 @@ const ChatResponse: React.FC = () => {
       id: 1,
       role: "user",
       content: "let's say it does - what happens then?",
+      credit: "4",
     },
     {
       id: 2,
       role: "assistant",
       senderName: "GPT 7.0",
+      versions: ["7.0", "4.0", "o1"],
       time: "02:22 AM",
       content: [
         "The question of whether androids dream of electric sheep is the title and central theme of the science fiction novel Do Androids Dream of Electric Sheep? by Philip K. Dick.",
-        "The book explores a world where androids are indistinguishable from humans except for a lack of empathy. The story follows Rick Deckard, a bounty hunter who tracks down rogue androids.",
-        "The title refers to the empathy test used to distinguish between humans and androids. The test involves administering a fictional scenario and evaluating the subject's emotional response. Electric sheep are rare, real animals that people own as status symbols. Owning one is seen as a sign of empathy and a connection to the natural world.",
-        "The book never definitively answers the question of whether androids dream or not. It explores the nature of reality, consciousness, and what it means to be human.",
-        "The book inspired the movie Blade Runner, though there are some key differences in plot.",
+        "The book explores a world where androids are indistinguishable from humans except for a lack of empathy.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The book explores a world where androids are indistinguishable from humans except for a lack of empathy.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+      ],
+    },
+    {
+      id: 3,
+      role: "user",
+      content: "let's say it does - what happens then?",
+      credit: "4",
+    },
+    {
+      id: 4,
+      role: "assistant",
+      senderName: "GPT 7.0",
+      versions: ["7.0", "4.0", "o1"],
+      time: "02:22 AM",
+      content: [
+        "The question of whether androids dream of electric sheep is the title and central theme of the science fiction novel Do Androids Dream of Electric Sheep? by Philip K. Dick.",
+        "The book explores a world where androids are indistinguishable from humans except for a lack of empathy.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The book explores a world where androids are indistinguishable from humans except for a lack of empathy.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
+        "The title refers to the empathy test used to distinguish between humans and androids.",
       ],
     },
   ];
 
   return (
-    <div className="min-h-screen p-4 md:p-10 font-sans text-slate-700">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Top Credits Label */}
+    <div className="min-h-screen bg-white font-sans">
+      <div className="max-w-6xl p-4 mx-auto space-y-8">
+        {messages.map((msg) => {
+          const hasVersions = msg.versions && msg.versions.length > 0;
 
-        {messages.map((msg) => (
-          <>
+          return (
             <div
               key={msg.id}
-              className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
+              className={`flex flex-col ${
+                msg.role === "user" ? "items-end" : "items-start"
+              }`}
             >
               {msg.role === "assistant" ? (
-                <div className="flex w-full gap-3">
+                <div className="flex w-full gap-3 min-h-[400px]">
                   {/* AI Avatar */}
-                  <div className="flex-shrink-0 w-9 h-9 bg-indigo-50 rounded-full flex items-center justify-center border border-indigo-100 shadow-sm mt-1">
-                    <Bot size={18} className="text-indigo-500" />
+                  <div className="flex-shrink-0 w-9 h-9 bg-[#EEF2FF] rounded-full flex items-center justify-center shadow-sm mt-1">
+                    <Bot size={18} className="text-primary" />
                   </div>
 
                   <div className="flex-1 space-y-2">
-                    {/* AI Header */}
+                    {/* AI Header with Conditional Dropdown */}
                     <div className="flex items-center gap-2 px-1">
-                      <span className="font-bold text-slate-800 text-[13px]">
-                        {msg.senderName}
-                      </span>
-                      <ChevronDown
-                        size={14}
-                        className="text-slate-400 cursor-pointer"
-                      />
-                      <span className="text-[11px] text-slate-400 font-medium">
+                      {hasVersions ? (
+                        <DropdownMenu>
+                          <DropdownMenuTrigger className="flex items-center gap-1 font-bold text-primaryDark text-[14px] outline-none hover:opacity-70 transition-opacity">
+                            {msg.senderName}{" "}
+                            <ChevronDown size={14} className="text-slate-400" />
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent
+                            align="start"
+                            className="rounded-xl p-1 min-w-[150px] bg-white border shadow-lg"
+                          >
+                            {msg.versions?.map((v) => (
+                              <>
+                                <DropdownMenuItem
+                                  key={v}
+                                  className="rounded-lg cursor-pointer focus:bg-grey-50 focus:text-textMuted p-2 text-sm"
+                                >
+                                  {msg.senderName} {v}
+                                </DropdownMenuItem>
+                                <hr />
+                              </>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      ) : (
+                        <span className="font-bold text-primaryDark text-[14px]">
+                          {msg.senderName}
+                        </span>
+                      )}
+
+                      <span className="text-sm text-[#94A3B8] font-medium">
                         {msg.time}
                       </span>
                     </div>
 
                     {/* AI Message Bubble */}
-                    <div className="bg-[#F8FAFC] border border-slate-100/50 p-5 md:p-8 rounded-3xl rounded-tl-none shadow-[0_2px_15px_-3px_rgba(0,0,0,0.04)]">
+                    <div className="bg-[#F8FAFC] p-5 rounded-[2rem] rounded-tl-none ">
                       {Array.isArray(msg.content) ? (
                         <div className="space-y-4">
-                          <p className="text-[14px] md:text-[15px] leading-relaxed text-slate-600">
+                          <p className="text-sm md:text-[16px] leading-relaxed text-textMuted">
                             {msg.content[0]}
                           </p>
                           <ul className="space-y-4">
                             {msg.content.slice(1).map((point, idx) => (
                               <li
                                 key={idx}
-                                className="flex gap-3 text-[14px] md:text-[15px] leading-relaxed text-slate-600"
+                                className="flex gap-3 text:sm md:text-[16px] leading-relaxed text-textMuted"
                               >
-                                <span className="font-bold text-slate-400 min-w-[15px]">
+                                <span className="font-bold text-textMuted min-w-[15px]">
                                   {idx + 1}.
                                 </span>
                                 <span>{point}</span>
@@ -87,7 +144,7 @@ const ChatResponse: React.FC = () => {
                           </ul>
                         </div>
                       ) : (
-                        <p className="text-[14px] md:text-[15px] leading-relaxed text-slate-600">
+                        <p className="text-sm md:text-[16px] leading-relaxed text-textMuted">
                           {msg.content}
                         </p>
                       )}
@@ -95,22 +152,25 @@ const ChatResponse: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <>
-                  <div className="flex justify-end pr-2">
-                    <span className="text-[14px] font-medium text-primary tracking-tighter">
-                      4 Credits used
-                    </span>
-                  </div>
-                  <div className="bg-[#F8FAFC] border border-slate-100 px-6 py-3 rounded-full rounded-tr-none shadow-sm max-w-[90%] md:max-w-[70%] text-right">
-                    <p className="text-[14px] md:text-[15px] text-slate-500">
+                /* User Section */
+                <div className="w-full flex flex-col items-end">
+                  {msg.credit && (
+                    <div className="pr-2 mb-2">
+                      <span className="text-sm font-bold text-primary tracking-tight">
+                        {msg.credit} Credits used
+                      </span>
+                    </div>
+                  )}
+                  <div className="bg-[#F8FAFC] px-6 py-3 rounded-3xl rounded-tr-none shadow-sm max-w-[85%] text-right">
+                    <p className="text-sm md:text-[16px] text-textMuted">
                       {msg.content}
                     </p>
                   </div>
-                </>
+                </div>
               )}
             </div>
-          </>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

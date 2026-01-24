@@ -32,7 +32,7 @@ export function Modelbar({
   return (
     <nav className="w-full px-5 pt-10">
       <div className="overflow-x-auto no-scrollbar">
-        <div className="flex w-max mx-auto gap-2 overflow-x-auto no-scrollbar pb-2 flex-nowrap">
+        <div className="flex w-max mx-auto gap-2.5 overflow-x-auto no-scrollbar pb-2 flex-nowrap">
           {models?.map((model) => {
             const isActive = selectedModel.id === model.id;
             const hasVersions = model.versions && model.versions.length > 0;
@@ -48,8 +48,8 @@ export function Modelbar({
                   setSelectedModel(model);
                   if (model.versions) setActiveVersion(model.versions[0]);
                 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-[14px] text-[16px] font-normal transition-all duration-300 border flex-shrink-0 whitespace-nowrap
-                ${isActive ? "text-white btn-gradient shadow-md" : "bg-white text-primaryDark hover:bg-gray-50"}`}
+                className={`flex items-center gap-2 px-4 md:px-10 py-2.5 rounded-[14px] text-[16px]  transition-all duration-300 border flex-shrink-0 whitespace-nowrap outline-none
+                ${isActive ? "text-white btn-gradient shadow-[inset_0px_4px_10px_rgba(0,0,0,0.4)] font-bold" : "bg-white text-primaryDark hover:bg-gray-50 font-normal"}`}
               >
                 <span
                   className={`flex-shrink-0 ${isActive ? "brightness-0 invert" : ""}`}
@@ -76,9 +76,10 @@ export function Modelbar({
                   className="rounded-xl p-1 min-w-[150px]"
                 >
                   {model.versions?.map((v) => (
-                    <DropdownMenuItem
+                   <>
+                     <DropdownMenuItem
                       key={v}
-                      className="rounded-lg cursor-pointer"
+                      className="rounded-lg cursor-pointer focus:bg-grey-50 focus:text-textMuted"
                       onClick={() => {
                         setSelectedModel(model);
                         setActiveVersion(v);
@@ -86,6 +87,8 @@ export function Modelbar({
                     >
                       {model.baseLabel} {v}
                     </DropdownMenuItem>
+                    <hr />
+                   </>
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>

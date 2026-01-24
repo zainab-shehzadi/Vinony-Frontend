@@ -41,7 +41,9 @@ export function ChatInput({
     selectedModel.versions && selectedModel.versions.length > 0;
 
   return (
-    <div className={`w-full max-w-4xl mx-auto p-4 border border-[#CBD5E1] rounded-lg`}>
+    <div
+      className={`w-full mx-auto p-4 border border-[#CBD5E1] rounded-lg`}
+    >
       <div className="inline-block mb-2 ml-2">
         {hasVersions ? (
           <DropdownMenu>
@@ -59,13 +61,16 @@ export function ChatInput({
               className="rounded-xl p-1 min-w-[150px]"
             >
               {selectedModel.versions?.map((v) => (
-                <DropdownMenuItem
-                  key={v}
-                  onClick={() => setActiveVersion(v)}
-                  className="cursor-pointer"
-                >
-                  {selectedModel.baseLabel} {v}
-                </DropdownMenuItem>
+                <>
+                  <DropdownMenuItem
+                    key={v}
+                    onClick={() => setActiveVersion(v)}
+                    className="cursor-pointer focus:bg-grey-50 focus:text-textMuted"
+                  >
+                    {selectedModel.baseLabel} {v}
+                  </DropdownMenuItem>
+                  <hr />
+                </>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -88,12 +93,13 @@ export function ChatInput({
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Ask Anything"
-            className="w-full py-2 bg-transparent border-none focus:ring-0 text-primaryDark outline-none placeholder:placeholderDark text-[16px]"
+            className="w-full py-2 bg-transparent border-none focus:ring-0 text-primaryDark outline-none placeholder:textMuted text-[16px]"
           />
           <div className="flex items-center gap-2">
             <Mic size={20} className="text-[#94A3B8]" />
             <button
-              className={`p-2 rounded-full text-white btn-gradient transition-all ${inputValue ? "opacity-100 shadow-md" : "opacity-50"}`} onClick={()=> setReqGenerate(true)}
+              className={`p-2 rounded-full text-white btn-gradient transition-all ${inputValue ? "opacity-100 shadow-md" : "opacity-50"}`}
+              onClick={() => setReqGenerate(true)}
             >
               <ArrowUp size={20} strokeWidth={3} />
             </button>
