@@ -31,7 +31,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#0B0B0F] text-white mt-6 md:mt-10">
-      <div className=" px-10  lg:px-20 xl:px-40 py-14 ">
+      <div className=" px-10 lg:px-20 xl:px-36 py-14 ">
         <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-5">
           <div className="md:col-span-1">
             <h3 className="text-xl font-semibold text-white">Vinony</h3>

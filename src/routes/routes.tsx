@@ -16,6 +16,8 @@ import PricingPage from "@/pages/pricing/PricingPage";
 import AIModelPage from "@/pages/aIModels/AIModel";
 import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
 import NotFound from "@/pages/notFound";
+import TermAndCondition from "@/pages/legal/TermsAndConditions";
+import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
 
 
 export const routes: RouteObject[] = [
@@ -32,8 +34,8 @@ export const routes: RouteObject[] = [
       { path: PATH.AIMODEL, element: <AIModelPage /> },
       { path: PATH.AIMODEL_DETAIL, element: <ModelDetailPage /> },
 
-      // { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
-      // { path: PATH.TERMS, element: <TermsAndConditions /> },
+      { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
+      { path: PATH.TERMS, element: <TermAndCondition /> },
     ],
   },
 

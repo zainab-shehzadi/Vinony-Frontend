@@ -169,7 +169,7 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen w-full bg-[radial-gradient(80%_60%_at_50%_0%,rgba(128,90,245,0.18),transparent_60%),linear-gradient(to_bottom,#ffffff,#fafafa)]">
-      <div className="mx-auto flex min-h-screen flex-col items-center justify-center gap-10 px-6 py-12 md:flex-row md:gap-14">
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center gap-10 px-6 py-12 md:flex-row md:gap-14">
         {/* left content */}
         <div className="max-w-xl">
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">

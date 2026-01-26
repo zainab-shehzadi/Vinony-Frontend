@@ -19,7 +19,7 @@
   }
 
   .auth-page {
-    @apply w-full flex justify-center px-4 py-20;
+    @apply w-full flex justify-center px-4 pt-10 lg:pt-20 pb-4;
   }
 
   .auth-bg {
@@ -39,7 +39,7 @@
   }
 
   .auth-label {
-    @apply text-base font-semibold leading-5 tracking-normal text-black;
+    @apply text-sm md:text-base font-semibold leading-5 tracking-normal text-black;
   }
 
   .auth-input {
@@ -73,20 +73,16 @@
     --popover-foreground: 225 14% 15%;
 
   
-    /* Primary = #805AF5 */
     --primary: 255 89% 66%;
     --primary-foreground: 0 0% 100%;
 
-    /* / Secondary = #2DA5F3 / */
     --secondary: 204 89% 56%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96.1%;
 
-    /* ✅ Subheading / muted text: #6C7278 */
     --muted-foreground: 220 7% 46%;
 
-    /* Accent = can keep as-is or set same as muted-foreground */
     --accent: 220 7% 46%;
     --accent-foreground: 0 0% 100%;
 
@@ -99,7 +95,6 @@
 
     --radius: 0.5rem;
 
-    /* / Gradient  */
     --btn-grad-from: #805AF5;
     --btn-grad-to: #CD99FF;
   }

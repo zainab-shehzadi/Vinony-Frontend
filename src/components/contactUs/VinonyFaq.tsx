@@ -34,7 +34,7 @@ export default function VinonyFaq({
 
     return (
         <section>
-            <div className="px-2 md:px-10 pt-10 md:pt-16 lg:pt-20">
+            <div className="pt-10 md:pt-16 lg:pt-20">
                 <SectionHeading
                     eyebrow="Vinony Related Questions"
                     title="Frequently Asked Questions"
@@ -57,7 +57,7 @@ export default function VinonyFaq({
                                 >
                                     <div className="flex items-start gap-4">
                                         <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-primary/60" />
-                                        <span className="text-base md:text-lg lg:text-[20px] font-bold text-gray-900">
+                                        <span className="text-base md:text-lg lg:text-[20px] font-semibold text-gray-900">
                                             {item.question}
                                         </span>
                                     </div>

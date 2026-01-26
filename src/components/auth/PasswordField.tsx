@@ -18,10 +18,11 @@ const PasswordField = React.forwardRef<HTMLInputElement, Props>(
             ref={ref} 
             {...props} 
             type={show ? "text" : "password"}
+            placeholder="Enter Password"
             className={[
               "auth-input pr-10",
               error ? "border-red-500 focus-visible:ring-red-500" : "",
-              className ?? "",
+              className ?? "placeholder:text-sm",
             ].join(" ")}
           />
 

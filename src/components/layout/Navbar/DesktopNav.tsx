@@ -6,7 +6,6 @@ import type { NavItem } from "@/types/navbar";
 export default function DesktopNav({ items }: { items: NavItem[] }) {
   return (
     <nav className="hidden lg:flex items-center justify-center">
-      {/* pill container */}
       <div className="rounded-full bg-[#F1E4FF]/90 px-8 py-3 shadow-sm">
         <ul className="flex items-center gap-10">
           {items.map((item) => (
@@ -28,7 +27,7 @@ export default function DesktopNav({ items }: { items: NavItem[] }) {
                       className={cn(
                         "relative",
                         isActive &&
-                          "after:absolute after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:h-[3px] after:w-[40px] after:rounded-full after:bg-primary after:shadow-[0_20px_50px_rgba(124,58,237,0.35)]"
+                          "after:absolute after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:h-[4px] after:w-[45px] after:rounded-full after:btn-gradient "
                       )}
                     >
                       {item.label}

@@ -39,25 +39,27 @@ export default function ForgotPassword() {
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="email">
+            <Label className="auth-label text-sm md:text-base" htmlFor="email">
               Email Address
             </Label>
             <Input
               id="email"
-              className={`auth-input ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
+              placeholder="Enter email"
+              className={`auth-input placeholder:text-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
+                }`}
               autoComplete="email"
               {...register("email")}
             />
             {errors.email?.message ? <p className="text-xs text-red-600">{errors.email.message}</p> : null}
           </div>
 
-    
-          <Button type="submit" onClick={() => navigate("/reset-password")} className="auth-primary-btn h-12 text-lg " disabled={isSubmitting}>
+
+          <Button type="submit" onClick={() => navigate("/reset-password")} className="auth-primary-btn h-10 md:h-12 text-sm md:text-base " disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Code"}
           </Button>
 
 
-          <div className="md:text-lg text-[#81878C] space-y-1 md:py-2">
+          <div className="text-sm md:text-lg text-[#81878C] space-y-1 md:py-2">
             <div>
               Already have account?{" "}
               <Link to="/login" className="auth-link text-secondary">
@@ -73,7 +75,7 @@ export default function ForgotPassword() {
           </div>
           <div className="auth-divider " />
 
-          <p className=" auth-helper md:pt-4 md:text-lg text-[#5B5D5E]">
+          <p className=" auth-helper md:pt-4 text-sm md:text-lg text-[#5B5D5E]">
             You may contact{" "}
             <a className="auth-link text-primary" href="#" onClick={(e) => e.preventDefault()}>
               Customer Service
