@@ -60,12 +60,14 @@ export default function SignUp() {
       <AuthCard title="Sign Up">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="email">
+            <Label className="auth-label text-sm md:text-base" htmlFor="email">
               Email Address
             </Label>
             <Input
               id="email"
-              className={`auth-input ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
+              placeholder="Enter email"
+              className={`auth-input placeholder:text-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
+                }`}
               autoComplete="email"
               {...register("email")}
             />
@@ -73,7 +75,7 @@ export default function SignUp() {
           </div>
 
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="password">
+            <Label className="auth-label text-sm md:text-base" htmlFor="password">
               Password
             </Label>
             <PasswordField
@@ -86,7 +88,7 @@ export default function SignUp() {
           </div>
 
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="confirmPassword">
+            <Label className="auth-label text-sm md:text-base" htmlFor="confirmPassword">
               Confirm Password
             </Label>
             <PasswordField
@@ -104,13 +106,13 @@ export default function SignUp() {
               onCheckedChange={(v) => setValue("acceptTerms", Boolean(v))}
               className="h-5 w-5 shrink-0 mt-[8px]"
             />
-            <Label htmlFor="acceptTerms" className="md:text-base text-gray-700 leading-5">
+            <Label htmlFor="acceptTerms" className="text-sm md:text-base text-gray-700 leading-5">
               By Creating an Account, I accept the{" "}
-              <a className="auth-link text-primary" href="#" onClick={(e) => e.preventDefault()}>
+              <a className="auth-link text-primary" href="/terms-condition">
                 Terms and Conditions
               </a>{" "}
               and agree with{" "}
-              <a className="auth-link text-primary" href="#" onClick={(e) => e.preventDefault()}>
+              <a className="auth-link text-primary" href="/privacy-policy">
                 Privacy Policies
               </a>
               .
@@ -118,7 +120,7 @@ export default function SignUp() {
           </div>
           {errors.acceptTerms?.message ? <p className="text-xs text-red-600">{errors.acceptTerms.message}</p> : null}
 
-          <Button type="submit" className="auth-primary-btn h-12 text-lg" disabled={isSubmitting}>
+          <Button type="submit" className="auth-primary-btn h-10 md:h-12 w-full text-base font-semibold" disabled={isSubmitting}>
             {isSubmitting ? "Creating..." : "Sign Up"}
           </Button>
           {/* Divider */}
@@ -128,12 +130,11 @@ export default function SignUp() {
             <div className="h-px flex-1 bg-gray-200" />
           </div>
 
-          {/* Google */}
           <Button
             type="button"
             variant="outline"
             onClick={onGoogle}
-            className="h-12 w-full rounded-xl border border-gray-100 bg-white text-base font-semibold hover:bg-gray-50 hover:text-black"
+            className="h-10 md:h-12 w-full rounded-xl border border-gray-150 bg-[#F4F5FA99] text-base font-semibold hover:bg-gray-50 hover:text-black"
           >
             <img
               src="/google.svg"
@@ -143,7 +144,7 @@ export default function SignUp() {
             />
             Continue with Google
           </Button>
-          <div className="text-center md:text-lg pt-2">
+          <div className="text-center text-sm md:text-lg md:pt-2">
             Already have an account?{" "}
             <Link to="/login" className="auth-link text-primary">
               Sign In here

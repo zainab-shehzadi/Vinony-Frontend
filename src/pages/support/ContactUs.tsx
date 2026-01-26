@@ -27,7 +27,7 @@ export default function ContactUs() {
         <div className="mt-4 rounded-2xl bg-white shadow-[0_0px_10px_rgba(0,0,0,0.10)] md:mt-10 lg:mt-12 ">
           <div className="grid overflow-hidden rounded-2xl md:grid-cols-12">
             <div className="md:col-span-5 p-2 lg:p-4 ">
-              <ContactInfoPanel info={CONTACT_INFO} ballsImageSrc="/balls.svg" />
+              <ContactInfoPanel info={CONTACT_INFO} ballsImageSrc="/ball.png" />
             </div>
 
             <div className="md:col-span-7 md:p-0 lg:p-8">

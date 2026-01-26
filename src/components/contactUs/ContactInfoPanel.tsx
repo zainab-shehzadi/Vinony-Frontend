@@ -10,7 +10,7 @@ export default function ContactInfoPanel({ info, ballsImageSrc }: Props) {
     <div className="relative h-full overflow-hidden rounded-2xl">
       {/* background */}
       <div className="absolute inset-0 btn-gradient" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-[55%] sm:w-[45%] lg:w-[35%]">
+      <div className="pointer-events-none absolute bottom-0 right-0 w-[55%] lg:w-[45%]">
         <img
           src={ballsImageSrc}
           alt=""
