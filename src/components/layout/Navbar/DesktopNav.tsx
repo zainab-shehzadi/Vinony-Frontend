@@ -6,7 +6,7 @@ import type { NavItem } from "@/types/navbar";
 export default function DesktopNav({ items }: { items: NavItem[] }) {
   return (
     <nav className="hidden lg:flex items-center justify-center">
-      <div className="rounded-full bg-[#F1E4FF]/90 px-8 py-3 shadow-sm">
+      <div className="rounded-full bg-[#F1E4FF]/90 dark:bg-[#FFFFFF0D]/10 px-8 py-3 shadow-sm">
         <ul className="flex items-center gap-10">
           {items.map((item) => (
             <li key={item.key}>
@@ -17,7 +17,7 @@ export default function DesktopNav({ items }: { items: NavItem[] }) {
                   cn(
                     "relative inline-flex items-center gap-1 text-[18px] font-medium transition",
                     "px-2 py-1", 
-                    isActive ? "text-primary" : "text-black hover:text-primary"
+                    isActive ? "text-primary dark:text-white" : "text-black dark:text-[#BCC3D7] hover:text-primary"
                   )
                 }
               >
@@ -36,7 +36,7 @@ export default function DesktopNav({ items }: { items: NavItem[] }) {
                     {item.hasDropdown ? (
                       <ChevronDown
                         size={16}
-                        className={cn("mt-[1px]", isActive ? "text-primary" : "text-black")}
+                        className={cn("mt-[1px]", isActive ? "text-primary dark:text-white" : "text-black dark:text-[#BCC3D7]")}
                       />
                     ) : null}
                   </>

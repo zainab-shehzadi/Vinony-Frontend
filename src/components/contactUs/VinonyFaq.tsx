@@ -57,7 +57,7 @@ export default function VinonyFaq({
                                 >
                                     <div className="flex items-start gap-4">
                                         <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-primary/60" />
-                                        <span className="text-base md:text-lg lg:text-[20px] font-semibold text-gray-900">
+                                        <span className="text-base md:text-lg lg:text-[20px] font-semibold text-gray-900 dark:text-foreground">
                                             {item.question}
                                         </span>
                                     </div>

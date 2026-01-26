@@ -12,7 +12,7 @@ export default function TestimonialCard({ item, className }: Props) {
     return (
         <article
             className={cn(
-                "relative overflow-hidden rounded-2xl bg-white",
+                "relative overflow-hidden rounded-2xl bg-white dark:bg-background",
                 "border border-[#88888833]",
                 "p-7",
                 "shadow-[0_8px_10px_rgba(205,153,255,0.55)]",

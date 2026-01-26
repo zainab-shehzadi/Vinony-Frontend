@@ -30,7 +30,7 @@ export default function HowItWorksCard({
         >
           <div
             className={cn(
-              "relative h-full overflow-hidden rounded-2xl bg-white",
+              "relative h-full overflow-hidden rounded-2xl bg-white dark:bg-[#0D091D]",
               "min-h-[200px]  lg:min-h-[330px] xl:min-h-[340px]"
             )}
             style={{ clipPath: CLIP }}
@@ -44,14 +44,14 @@ export default function HowItWorksCard({
                   boxShadow: "inset 0 0 0 2px rgba(235, 196, 250, 0.55)",
                 }}
               />
-              <div className="absolute left-0 right-0 top-0 h-6 bg-white" />
+              <div className="absolute left-0 right-0 top-0 h-6 bg-white dark:bg-[#0D091D]/50" />
             </div>
 
             {/* content */}
             <div className="flex h-full flex-col p-5 sm:p-6 xl:p-8 xl:pt-10">
               <div
                 className={cn(
-                  "inline-flex items-center justify-center rounded-full bg-[#141223]",
+                  "inline-flex items-center justify-center rounded-full bg-[#141223] dark:bg-[#32284F]/50",
                   "h-12 w-12 md:h-14 md:w-14 xl:h-16 xl:w-16"
                 )}
               >

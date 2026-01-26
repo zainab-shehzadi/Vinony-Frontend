@@ -55,13 +55,12 @@ export default function ModelFilters({
                   onClick={() => onChange(t.id)}
                   className={cn(
                     "whitespace-nowrap font-medium transition",
-                    // responsive sizing (mobile -> desktop)
                     "h-10 sm:h-12 lg:h-14",
                     "rounded-xl sm:rounded-2xl",
                     "px-4 sm:px-7 lg:px-10",
                     "text-sm sm:text-base lg:text-xl",
                     // inactive
-                    !active && "bg-white border border-border text-foreground hover:bg-black/5",
+                    !active && "bg-white dark:bg-background border border-border text-foreground hover:bg-black/5",
                     // active
                     active && "btn-gradient text-white shadow-[0_10px_18px_rgba(124,58,237,0.25)]"
                   )}
@@ -75,7 +74,7 @@ export default function ModelFilters({
 
         {/* Search */}
         <div className="w-full lg:w-[420px]">
-          <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-border bg-white px-3 sm:px-4 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-border bg-white dark:bg-background px-3 sm:px-4 py-2.5 sm:py-3">
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
