@@ -28,11 +28,11 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-black/5">
+    <header className="sticky top-0 z-50 w-full bg-white dark:bg-background border-b border-black/5">
       <div className="w-full px-6 md:px-10 lg:px-14 xl:px-20 py-2 md:py-4">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <span className="text-[24px] font-semibold text-primary">Logo Here</span>
+            <span className="text-[24px] font-semibold text-primary dark:text-foreground">Logo Here</span>
           </Link>
 
           <DesktopNav items={NAV} />

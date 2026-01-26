@@ -35,7 +35,7 @@ export type CtaBannerContent = {
 
   backgroundImageSrc?: string;
   backgroundAlt?: string;
-
+  darkBackgroundImageSrc?: string; 
   minHeight?: {
     base?: number; // px
     sm?: number;

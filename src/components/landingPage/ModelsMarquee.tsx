@@ -28,7 +28,7 @@ function PillButton({
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
                 active
                     ? "btn-gradient text-white border-transparent"
-                    : "bg-white border-accent/60 hover:border-primary/70"
+                    : "bg-white dark:bg-[#2E313D] border-accent/60 hover:border-primary/70"
             )}
             aria-pressed={active}
             title={item.label}
@@ -69,7 +69,7 @@ export default function ModelsMarquee({
     };
 
     return (
-        <section className={cn("w-full bg-white", className)}>
+        <section className={cn("w-full bg-white dark:bg-background", className)}>
             <div className=" py-14 md:py-20">
 
                 <SectionHeading

@@ -20,7 +20,7 @@ import Container from "@/lib/Container";
 export default function LandingPage() {
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full">
       <Container>
         <SectionHero
           variant="heroB"
@@ -35,8 +35,10 @@ without juggling multiple subscriptions."
         />
         <GetStartedPreview
           imageSrc="/overlay-bg.svg"
+          darkimgSrc="/darkbg.svg"
           onGetStarted={() => console.log("clicked")}
         />
+        </Container>
         <ModelsMarquee
           items={DEFAULT_MODELS_MARQUEE}
           defaultActiveId="claude-sonnet"
@@ -47,6 +49,7 @@ without juggling multiple subscriptions."
           pauseOnHover
         />
 
+      <Container>
 
         <div className="py-12">
           <ModelShowcaseList
@@ -84,7 +87,7 @@ without juggling multiple subscriptions."
         <TestimonialsSection />
 
         <VinonyFaq />
-        <CtaBanner />;
+        <CtaBanner />
       </Container>
 
     </div>
