@@ -5,11 +5,19 @@ import { useState } from "react";
 
 export default function DashboardLayout() {
   const [toggle, setToggle] = useState(false);
-  const [activeHistory, setActiveHistory] = useState<Boolean>(false)
+  const [activeHistory, setActiveHistory] = useState<Boolean>(false);
+  const [activeView, setActiveView] = useState<String>("");
+  const [reqGenerate, setReqGenerate] = useState<Boolean>(false);
+
   return (
     <>
       <div className="flex h-screen">
-        <Sidebar toggle={toggle} setActiveHistory={setActiveHistory} />
+        <Sidebar
+          toggle={toggle}
+          setActiveHistory={setActiveHistory}
+          setActiveView={setActiveView}
+          setReqGenerate={setReqGenerate}
+        />
         {toggle && (
           <div
             className="fixed inset-0 bg-black/40 z-40 lg:hidden"
@@ -19,7 +27,7 @@ export default function DashboardLayout() {
         <div className="flex flex-col flex-1 min-w-0">
           <Header setToggle={setToggle} toggle={toggle} />
           <main className="flex-1 overflow-auto">
-            <Outlet context={activeHistory}/>
+            <Outlet context={{ activeHistory, setActiveHistory, activeView, reqGenerate, setReqGenerate }} />
           </main>
         </div>
       </div>
