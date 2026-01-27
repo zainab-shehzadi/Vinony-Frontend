@@ -52,7 +52,7 @@ function ChatHistory() {
   ];
 
   return (
-    <div className=" bg-white font-sans mt-10 overflow-y-auto hide-scrollbar">
+    <div className="w-full bg-white font-sans mt-10 overflow-y-auto hide-scrollbar">
       <div className="flex flex-col">
         {historyData.map((item) => {
           const isActive = activeId === item.id;
