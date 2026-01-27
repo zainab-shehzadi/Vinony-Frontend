@@ -1,13 +1,18 @@
-import ChatHistory from "@/components/dashboard/chatSection/ChatHistory";
-import ChatInput from "@/components/dashboard/chatSection/ChatInput";
-import ChatResponse from "@/components/dashboard/chatSection/ChatResponse";
-import { Modelbar } from "@/components/shared/model-bar";
+import ChatHistory from "../../../components/dashboard/chatSection/ChatHistory";
+import ChatInput from "../../../components/dashboard/chatSection/ChatInput";
+import ChatResponse from "../../../components/dashboard/chatSection/ChatResponse";
+import { Modelbar } from "../../../components/shared/model-bar";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import {AI_CHAT_MODELS, ModelConfig} from "@/constants/aiModelData"
 
+type OutletContextType = {
+  activeHistory: boolean;
+  setActiveHistory: (a: Boolean)=> void;
+};
+
 export default function Chat() {
-  const activeHistory = useOutletContext<Boolean>();
+  const { activeHistory, setActiveHistory } = useOutletContext<OutletContextType>();
   const [selectedModel, setSelectedModel] = useState<ModelConfig>(AI_CHAT_MODELS[0]);
   const [activeVersion, setActiveVersion] = useState<string>(
     AI_CHAT_MODELS[0].versions?.[0] || ""
@@ -15,7 +20,7 @@ export default function Chat() {
   const [reqGenerate, setReqGenerate] = useState<Boolean>(false);
 
   return (
-    <div className="flex w-full flex-col h-[90vh]">
+    <div className="flex w-full md:px-10 flex-col h-[90vh]">
       <Modelbar
         models={AI_CHAT_MODELS}
         selectedModel={selectedModel}
@@ -33,7 +38,7 @@ export default function Chat() {
         )}
 
         {reqGenerate && (
-          <div className="flex-grow  overflow-y-auto">
+          <div className="flex-grow w-full overflow-y-auto">
              <ChatResponse/>
           </div>
         )}
@@ -45,6 +50,7 @@ export default function Chat() {
             setActiveVersion={setActiveVersion}
             reqGenerate={reqGenerate}
             setReqGenerate={setReqGenerate}
+            setActiveHistory={setActiveHistory}
           />
         </div>
         {!reqGenerate && activeHistory && (
