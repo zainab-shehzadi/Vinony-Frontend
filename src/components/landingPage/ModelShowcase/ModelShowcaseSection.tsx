@@ -25,7 +25,7 @@ export default function ModelShowcaseSection({
     return (
         <section
             className="
-        w-full overflow-visible rounded-2xl bg-white
+        w-full overflow-visible rounded-2xl bg-white dark:bg-background
         border-2 border-primary
         px-6 py-10 md:px-12 md:py-14
       "

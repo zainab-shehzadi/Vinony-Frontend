@@ -56,14 +56,15 @@ export default function SignIn() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Email */}
           <div className="space-y-2">
-            <Label className="auth-label" htmlFor="email">
+            <Label className="auth-label text-sm md:text-base" htmlFor="email">
               Email Address
             </Label>
 
             <Input
               id="email"
               autoComplete="email"
-              className={`auth-input ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
+              placeholder="Enter email"
+              className={`auth-input ${errors.email ? "border-red-500 focus-visible:ring-red-500" : "placeholder-text-sm"
                 }`}
               {...register("email")}
             />
@@ -75,11 +76,11 @@ export default function SignIn() {
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label className="auth-label" htmlFor="password">
+              <Label className="auth-label text-sm md:text-base" htmlFor="password">
                 Password
               </Label>
 
-              <Link to="/forgot-password" className="auth-link text-base">
+              <Link to="/forgot-password" className="auth-link text-sm md:text-base">
                 Forgot Password
               </Link>
             </div>
@@ -93,7 +94,7 @@ export default function SignIn() {
           </div>
 
           {/* Keep signed in */}
-          <div className="flex items-center gap-2 pt-1">
+          <div className="flex items-center gap-2 lg:pt-1">
             <Checkbox
               id="keepSignedIn"
               checked={keepSignedIn}
@@ -106,14 +107,14 @@ export default function SignIn() {
                 });
               }}
             />
-            <Label htmlFor="keepSignedIn" className="text-base leading-5 text-gray-700">
+            <Label htmlFor="keepSignedIn" className="text-sm md:text-base leading-5 text-gray-700">
               Keep me signed in
             </Label>
           </div>
 
           <Button
             type="submit"
-            className="auth-primary-btn h-12 w-full text-base font-semibold"
+            className="auth-primary-btn h-10 md:h-12 w-full text-base font-semibold"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Signing in..." : "Sign In"}
@@ -130,7 +131,7 @@ export default function SignIn() {
             type="button"
             variant="outline"
             onClick={onGoogle}
-            className="h-12 w-full rounded-xl border border-gray-100 bg-white text-base font-semibold hover:bg-gray-50 hover:text-black"
+            className="h-10 md:h-12 w-full rounded-xl border border-gray-150 bg-[#F4F5FA99] text-base font-semibold hover:bg-gray-50 hover:text-black"
           >
             <img
               src="/google.svg"
@@ -141,7 +142,7 @@ export default function SignIn() {
             Continue with Google
           </Button>
 
-          <div className="pt-2 text-center text-base text-gray-700">
+          <div className="md:pt-2 text-center text-sm md:text-lg text-gray-700">
             Don&apos;t have an Account?{" "}
             <Link to="/register" className="auth-link text-primary">
               Sign up here

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CircleDollarSign } from "lucide-react";
 
 // Data Type definition for Type Safety

@@ -2,9 +2,9 @@ import CreationInput from "@/components/dashboard/imageSection/CreationInput";
 import { Modelbar } from "@/components/shared/model-bar";
 import { useState } from "react";
 import { AI_IMAGE_MODELS, ModelConfig } from "@/constants/aiModelData";
-import GeneratedImage from "@/components/dashboard/imageSection/GeneratedImage";
 import GeneratedHistory from "@/components/dashboard/imageSection/GeneratedHistory";
 import { useOutletContext } from "react-router-dom";
+import GeneratedImage from "@/components/dashboard/imageSection/GeneratedImage";
 
 type OutletContextType = {
   activeView: String;

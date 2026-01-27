@@ -8,7 +8,7 @@ import InlineBadges from "./InlineBadges";
 
 const VARIANT = {
   heroB: {
-    title: "text-[30px] md:text-[52px] lg:text-[64px] leading-[1.10] tracking-tight font-extrabold",
+    title:"text-[30px] md:text-[52px] lg:text-[64px] leading-[1.10] tracking-[-0.01em] font-extrabold",
     subtitle: "mt-4 lg:mt-6 md:max-w-[650px] text-base md:text-[24px] lg:text-2xl leading-7 md:leading-8 lg:leading-9 text-foreground font-medium",
     actionWrap: "mt-10",
   },
