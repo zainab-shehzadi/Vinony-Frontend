@@ -22,7 +22,12 @@ export function MobilePlanCard({
   const suffix = isMonthly ? "/Month" : "/Year";
 
   return (
-    <div className={cn("border border-border bg-background", selected ? "bg-primary/5" : "")}>
+    <div
+      className={cn(
+        "border border-border rounded-2xl transition-colors",
+        selected ? "bg-primary/20 dark:bg-primary/20" : "bg-gray-100 dark:bg-card"
+      )}
+    >
       <div className="border-b border-border p-4 md:p-6">
         <div className="text-2xl md:text-3xl font-bold text-primary">{plan.name}</div>
 

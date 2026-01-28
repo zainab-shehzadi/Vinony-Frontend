@@ -44,9 +44,10 @@ export default function ModelDetailPage() {
             <ModelCharacteristics items={model.characteristics} />
           </div>
           <HowItWorksSection />
+          
           <ModelCreditUsage imageSrc="/model.png" description={creditUsageDescription} />
           <GuaranteeStrip />
-          <CtaBanner content={ctaContent} onClick={() => console.log("CTA click for", model.id)} />
+          <CtaBanner content={ctaContent} onClick={() => navigate("/dashboard")} />
         </div>
       </Container>
     </div>

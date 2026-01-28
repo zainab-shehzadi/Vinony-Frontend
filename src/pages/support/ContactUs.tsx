@@ -15,7 +15,7 @@ export default function ContactUs() {
     <div className="w-full">
       <div className="px-6 md:px-10 xl:px-20 pt-10 md:pt-20 xl:pt-32 md:pb-10">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold leading-[1.05] text-gray-900 dark:text-white md:text-6xl xl:text-[64px]">
+          <h1 className="text-[30px] font-extrabold leading-[1.05] text-gray-900 dark:text-white md:text-6xl xl:text-[64px]">
             Contact <span className="text-primary">Us</span>
           </h1>
 
@@ -24,7 +24,7 @@ export default function ContactUs() {
           </p>
         </div>
 
-        <div className="mt-4 rounded-2xl bg-white dark:bg-[#0D091D] shadow-[0_0px_10px_rgba(0,0,0,0.10)] md:mt-10 lg:mt-12 ">
+        <div className="mt-4 rounded-2xl bg-white dark:bg-primary/10 shadow-[0_0px_10px_rgba(0,0,0,0.10)] md:mt-10 lg:mt-12 ">
           <div className="grid overflow-hidden rounded-2xl md:grid-cols-12">
             <div className="md:col-span-5 p-2 lg:p-4 ">
               <ContactInfoPanel info={CONTACT_INFO} ballsImageSrc="/ball.png" />

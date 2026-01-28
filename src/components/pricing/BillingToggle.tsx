@@ -16,7 +16,7 @@ export default function BillingToggle({ value, onChange, className }: Props) {
     <div className={cn("flex items-center justify-center", className)}>
       <div
         className={cn(
-          "inline-flex rounded-xl shadow-md",
+          "inline-flex rounded-xl shadow-md dark:bg-white/70",
          (isMonthly || !isMonthly) ? "p-1" : "p-3"
         )}
       >
@@ -36,7 +36,7 @@ export default function BillingToggle({ value, onChange, className }: Props) {
           onClick={() => onChange("yearly")}
           className={cn(
             "h-10 rounded-lg px-2 lg:px-6 text-sm lg:text-[14px] font-medium transition",
-            !isMonthly ? "btn-gradient text-white shadow-sm" : "text-black"
+            !isMonthly ? "btn-gradient text-white dark:text-white/90 shadow-sm" : "text-black"
           )}
         >
           Yearly (20% OFF)

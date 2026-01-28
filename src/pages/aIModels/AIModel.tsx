@@ -30,7 +30,7 @@ function matchesSearch(m: ModelCardData, q: string) {
 }
 
 export default function AIModelPage() {
-  const navigate = useNavigate(); // ✅
+  const navigate = useNavigate();
   const [tab, setTab] = React.useState<FilterTab>("all");
   const [search, setSearch] = React.useState("");
 

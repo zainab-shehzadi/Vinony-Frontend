@@ -18,11 +18,11 @@ export default function GetStartedPreview({
   onGetStarted,
   className,
 }: Props) {
-  const { resolved } = useTheme(); // "light" | "dark"
+  const { resolved } = useTheme(); 
   const src = resolved === "dark" ? darkimgSrc : imageSrc;
 
   return (
-    <section className={cn("w-full py-6 md:py-10", className)}>
+    <section className={cn("w-full pt-4 md:pt-10", className)}>
       {/* Button */}
       <div className="flex justify-center">
         <button

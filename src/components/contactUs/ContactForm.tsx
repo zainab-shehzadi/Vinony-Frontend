@@ -8,13 +8,27 @@ type Props = {
   onSubmit: (values: ContactSchemaValues) => Promise<void> | void;
 };
 
-const labelCls = "text-sm font-medium text-gray-800 md:text-base lg:text-lg";
+const labelCls =
+  "text-sm font-medium text-gray-800 dark:text-slate-300 md:text-base lg:text-lg";
 
 const inputCls =
-  "w-full border-0 border-b border-accent bg-transparent px-0 py-2 text-sm text-gray-900 placeholder:text-accent focus:outline-none focus:ring-0 focus:border-gray-900 md:text-base lg:text-lg";
+  "w-full border-0 border-b border-slate-300/70 dark:border-slate-600/70 " +
+  "bg-transparent px-0 py-2 text-sm " +
+  "text-gray-900 dark:text-slate-100 " +
+  "placeholder:text-slate-500 dark:placeholder:text-slate-400 " +
+  "focus:outline-none focus:ring-0 " +
+  "focus:border-gray-900 dark:focus:border-slate-200 " +
+  "md:text-base lg:text-lg";
 
 const textareaCls =
-  "w-full resize-none border-0 border-b border-accent bg-transparent px-0 py-2 text-sm text-gray-900 placeholder:text-accent focus:outline-none focus:ring-0 focus:border-gray-900 md:text-base lg:text-lg";
+  "w-full resize-none border-0 border-b border-slate-300/70 dark:border-slate-600/70 " +
+  "bg-transparent px-0 py-2 text-sm " +
+  "text-gray-900 dark:text-slate-100 " +
+  "placeholder:text-slate-500 dark:placeholder:text-slate-400 " +
+  "focus:outline-none focus:ring-0 " +
+  "focus:border-gray-900 dark:focus:border-slate-200 " +
+  "md:text-base lg:text-lg";
+
 
 export default function ContactForm({ onSubmit }: Props) {
   const {
@@ -92,24 +106,31 @@ export default function ContactForm({ onSubmit }: Props) {
           ) : null}
         </div>
 
-        {/* Phone */}
         <div>
           <label className={labelCls} htmlFor="phone">
             Phone Number
           </label>
+
           <input
             id="phone"
             placeholder="+0 123 456 789"
-            inputMode="tel"
+            inputMode="numeric"
             autoComplete="tel"
             className={`${inputCls} ${errors.phone ? "border-red-500 focus:border-red-500" : ""}`}
-            {...register("phone")}
+            {...register("phone", {
+              setValueAs: (v) => String(v ?? "").replace(/\D/g, ""),
+              validate: (v: any) => (/^\d*$/.test(v) ? true : "Only numbers are allowed"),
+            })}
+            onInput={(e) => {
+              const el = e.currentTarget;
+              el.value = el.value.replace(/\D/g, "");
+            }}
           />
+
           {errors.phone?.message ? (
             <p className="mt-1 text-xs text-red-600">{errors.phone.message}</p>
           ) : null}
         </div>
-
         {/* Message */}
         <div className="sm:col-span-2">
           <label className={labelCls} htmlFor="message">

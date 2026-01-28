@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import type { BillingCycle, FeatureRow, Plan, PlanId } from "@/types/pricing";
 import PricingButton from "./PricingButton";
 import BillingToggle from "./BillingToggle";
-import { MobilePlanCard } from "./MobilePlanCard";
 import { formatPriceUSD } from "@/lib/formatters";
 import FeatureCell from "./FeatureCell";
+import { MobilePlanCard } from "./MobilePlanCard";
 
 type Props = {
   plans: Plan[];
@@ -40,10 +40,19 @@ export default function PricingComparisonTable({
   return (
     <section className={cn("w-full my-6", className)}>
       <div className="mx-auto">
-        <BillingToggle value={cycle} onChange={setCycle} className="mb-16" />
+        <BillingToggle value={cycle} onChange={setCycle} className="mb-10 lg:mb-16" />
 
-        {/* Mobile */}
-        <div className="lg:hidden space-y-4 border border-border divide-y divide-border">
+        <div
+          className={cn(
+            "lg:hidden px-6 md:px-10",
+            "space-y-4 divide-y divide-border",
+            "md:space-y-0 md:divide-y-0 md:grid md:grid-cols-2 md:gap-6",
+            "md:[&>*:last-child:nth-child(odd)]:col-span-2",
+            "md:[&>*:last-child:nth-child(odd)]:justify-self-center",
+            "md:[&>*:last-child:nth-child(odd)]:w-full",
+            "md:[&>*:last-child:nth-child(odd)]:max-w-[420px]"
+          )}
+        >
           {plans.map((p) => (
             <MobilePlanCard
               key={p.id}
@@ -57,8 +66,8 @@ export default function PricingComparisonTable({
         </div>
 
         <div className="hidden lg:block">
-          <div className="border border-border bg-background px-4 xl:px-16">
-            <table className="w-full table-fixed border-collapse">
+          <div className="border-y border-border bg-background px-4 xl:px-16">
+            <table className="w-full table-fixed border-collapse border-x border-border">
               <colgroup>
                 <col className="w-[28%]" />
                 <col className="w-[24%]" />
@@ -70,7 +79,7 @@ export default function PricingComparisonTable({
                 <tr className="border-b border-border">
                   <th className="border-r border-border py-6 lg:py-8 px-4 md:px-6 lg:px-8 text-left align-top">
                     <div className="text-[24px] text-foreground">Plans Features</div>
-                    <p className="mt-4 lg:mt-6 max-w-[240px] font-medium text-sm lg:text-[16px] leading-6 text-[#858BA0]/80">
+                    <p className="mt-4 lg:mt-6 xl:mt-8 max-w-[240px] font-medium text-sm lg:text-[16px] leading-6 lg:leading-7 text-[#858BA0]/80">
                       Choose your workspace plan according to your organisational plan.
                     </p>
                   </th>

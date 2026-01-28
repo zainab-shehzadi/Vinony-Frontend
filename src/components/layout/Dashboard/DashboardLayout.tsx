@@ -13,12 +13,7 @@ export default function DashboardLayout() {
   return (
     <>
       <div className="flex h-screen">
-        <Sidebar
-          toggle={toggle}
-          setActiveHistory={setActiveHistory}
-          setActiveView={setActiveView}
-          setReqGenerate={setReqGenerate}
-        />
+        <Sidebar toggle={toggle} setActiveHistory={setActiveHistory} />
         {toggle && (
           <div
             className="fixed inset-0 bg-black/40 z-40 lg:hidden"

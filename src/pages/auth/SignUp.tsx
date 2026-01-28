@@ -65,7 +65,7 @@ export default function SignUp() {
             </Label>
             <Input
               id="email"
-              placeholder="Enter email"
+              placeholder="Enter your email address"
               className={`auth-input placeholder:text-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
                 }`}
               autoComplete="email"
@@ -80,7 +80,7 @@ export default function SignUp() {
             </Label>
             <PasswordField
               id="password"
-              placeholder="8+ characters"
+              placeholder="Create a password"
               autoComplete="new-password"
               {...register("password")}
               error={errors.password?.message}
@@ -93,6 +93,7 @@ export default function SignUp() {
             </Label>
             <PasswordField
               id="confirmPassword"
+              placeholder="Re-enter your password"
               autoComplete="new-password"
               {...register("confirmPassword")}
               error={errors.confirmPassword?.message}
@@ -106,7 +107,7 @@ export default function SignUp() {
               onCheckedChange={(v) => setValue("acceptTerms", Boolean(v))}
               className="h-5 w-5 shrink-0 mt-[8px]"
             />
-            <Label htmlFor="acceptTerms" className="text-sm md:text-base text-gray-700 leading-5">
+            <Label htmlFor="acceptTerms" className="text-sm md:text-base text-foreground leading-5">
               By Creating an Account, I accept the{" "}
               <a className="auth-link text-primary" href="/terms-condition">
                 Terms and Conditions
@@ -134,7 +135,7 @@ export default function SignUp() {
             type="button"
             variant="outline"
             onClick={onGoogle}
-            className="h-10 md:h-12 w-full rounded-xl border border-gray-150 bg-[#F4F5FA99] text-base font-semibold hover:bg-gray-50 hover:text-black"
+            className="h-10 md:h-12 w-full rounded-xl border border-border bg-[#F4F5FA99] dark:bg-card text-base font-semibold hover:bg-gray-50 hover:text-foreground"
           >
             <img
               src="/google.svg"

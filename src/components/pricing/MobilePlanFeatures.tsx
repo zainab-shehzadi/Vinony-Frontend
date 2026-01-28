@@ -13,7 +13,7 @@ export default function MobilePlanFeatures({ features, planId, className }: Prop
   return (
     <div className={["divide-y divide-border", className ?? ""].join(" ")}>
       {features.map((row) => (
-        <div key={row.id} className="flex items-start justify-between gap-4 px-4 py-4">
+        <div key={row.id} className="flex items-start justify-between gap-4 p-2">
           <span className="text-sm md:text-base font-medium text-foreground">{row.label}</span>
 
           <div className="shrink-0 text-right">

@@ -28,7 +28,7 @@ export const MODEL_SHOWCASE: ModelShowcaseItem[] = [
       { id: "f4", text: "High-Resolution, Long-Form Video Output" },
     ],
     ctaLabel: "Start Exploring Now",
-    imageSrc: "/chat.svg",
+    imageSrc: "/chat1.svg",
     imageAlt: "Veo model preview",
   },
   {

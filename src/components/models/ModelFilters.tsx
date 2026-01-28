@@ -38,7 +38,7 @@ export default function ModelFilters({
           aria-label="Model categories"
           className={cn(
             "w-full lg:w-auto",
-            "overflow-x-auto lg:overflow-visible",
+            "overflow-x-auto lg:overflow-visible ",
             "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           )}
         >

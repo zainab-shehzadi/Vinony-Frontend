@@ -19,7 +19,7 @@ export default function TestimonialsSection({
                     eyebrow="Testimonials"
                     title="What People Are Saying"
                 />
-                <div className="mt-10 grid gap-6 lg:gap-10 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-10 grid gap-6 lg:gap-8 xl:gap-10 md:grid-cols-2 lg:grid-cols-3">
                     {items.map((t) => (
                         <TestimonialCard key={t.id} item={t} />
                     ))}

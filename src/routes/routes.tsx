@@ -15,6 +15,7 @@ import LandingPage from "@/pages/landingPage/page";
 import PricingPage from "@/pages/pricing/PricingPage";
 import AIModelPage from "@/pages/aIModels/AIModel";
 import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
+import NotFound from "@/pages/notFound";
 import TermAndCondition from "@/pages/legal/TermsAndConditions";
 import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
 import NotFound from "@/pages/notFound";

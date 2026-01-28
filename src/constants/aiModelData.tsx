@@ -164,7 +164,7 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   {
     id: "unikorn",
     baseLabel: "UniKorn",
-    icon: <img src={unikorn} width={30} height={30} />,
+    icon: <Brain size={16} className="text-[#6881FD]" />,
   },
   {
     id: "nanobanana",
@@ -176,7 +176,7 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   {
     id: "seedream",
     baseLabel: "Seedream",
-    icon: <img src={seedream} width={16} height={16} />,
+    icon: <Zap size={16} className="text-primaryDark" />,
   },
   {
     id: "flux",
