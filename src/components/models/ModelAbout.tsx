@@ -18,7 +18,7 @@ export default function ModelAbout({ title, description, about }: Props) {
         About <span className="text-primary">{title}</span>
       </h2>
 
-      <div className="mt-2 space-y-3 text-sm leading-7 text-foreground dark:text-accent md:mt-3 md:text-base lg:space-y-4 lg:text-[18px]">
+      <div className="mt-2 space-y-3 text-sm md:eading-7 text-foreground dark:text-accent md:mt-3 md:text-base lg:space-y-4 lg:text-[18px]">
         <p>{description}</p>
 
         {(about ?? []).map((p, idx) => (

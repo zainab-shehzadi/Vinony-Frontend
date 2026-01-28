@@ -42,8 +42,9 @@ export default function ResetPassword() {
     <AuthShell>
       <AuthCard
         title="Reset Password"
-        subtitle="Enter your email and we’ll send you a verification code to reset your password."
+        subtitle="Enter your new password below and confirm it to reset your password."
       >
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
             <Label className="auth-label text-sm md:text-base" htmlFor="password">
@@ -51,7 +52,7 @@ export default function ResetPassword() {
             </Label>
             <PasswordField
               id="password"
-              placeholder="8+ characters"
+              placeholder="Enter new password" 
               autoComplete="new-password"
               {...register("password")}
               error={errors.password?.message}
@@ -64,13 +65,14 @@ export default function ResetPassword() {
             </Label>
             <PasswordField
               id="confirmPassword"
+              placeholder="Re-enter new password"
               autoComplete="new-password"
               {...register("confirmPassword")}
               error={errors.confirmPassword?.message}
             />
           </div>
 
-          <Button type="submit" onClick={() => navigate("/login")}  className="auth-primary-btn h-10 md:h-12 w-full text-sm md:text-base font-semibold" disabled={isSubmitting}>
+          <Button type="submit" onClick={() => navigate("/login")} className="auth-primary-btn h-10 md:h-12 w-full text-sm md:text-base font-semibold" disabled={isSubmitting}>
             {isSubmitting ? "Resetting..." : "Reset Password"}
           </Button>
 

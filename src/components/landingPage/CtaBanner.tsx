@@ -16,9 +16,9 @@ export default function CtaBanner({
   onClick,
   className,
 }: Props) {
-  const { resolved } = useTheme(); 
+  const { resolved } = useTheme();
 
-    const bgSrc =
+  const bgSrc =
     resolved === "dark" && content.darkBackgroundImageSrc
       ? content.darkBackgroundImageSrc
       : content.backgroundImageSrc;
@@ -29,11 +29,16 @@ export default function CtaBanner({
         <img
           key={bgSrc}
           src={bgSrc}
-          className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
           loading="lazy"
+          className={[
+            "absolute inset-0 h-full w-full",
+            "object-cover", // base
+            resolved === "dark"
+              ? "scale-[1.25] md:scale-[1.35] origin-center object-center"
+              : "scale-100",
+          ].join(" ")}
         />
-
         {/* Content */}
         <div className="relative flex min-h-[160px] sm:min-h-[190px] md:min-h-[220px] items-center justify-center py-6 md:py-10 text-center">
           <div className="max-w-3xl">
@@ -41,7 +46,7 @@ export default function CtaBanner({
               {content.title}
             </h3>
 
-            <p className="mt-6 text-sm md:text-base lg:text-xl font-semibold text-white">
+            <p className="mt-2 md:mt-6 text-sm md:text-base lg:text-xl font-semibold text-white">
               {content.subtitle}
             </p>
 
@@ -49,7 +54,7 @@ export default function CtaBanner({
             <Button
               type="button"
               onClick={onClick}
-              className=" mt-10 bg-black dark:btn-gradient hover:bg-black/50 h-11 rounded-xl px-10 text-sm font-semibold text-white md:h-14 md:text-base lg:text-lg"
+              className=" mt-4 md:mt-10 bg-black dark:btn-gradient hover:bg-black/50 h-11 rounded-xl px-10 text-sm font-semibold text-white md:h-14 md:text-base lg:text-lg"
             >
               {content.buttonLabel}
             </Button>

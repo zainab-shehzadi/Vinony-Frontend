@@ -2,10 +2,11 @@
 import * as React from "react";
 
 type ThemeMode = "light" | "dark" | "system";
+type Resolved = "light" | "dark";
 
 type ThemeCtx = {
   mode: ThemeMode;
-  resolved: "light" | "dark";
+  resolved: Resolved;
   setMode: (m: ThemeMode) => void;
   toggle: () => void;
 };
@@ -13,38 +14,50 @@ type ThemeCtx = {
 const ThemeContext = React.createContext<ThemeCtx | null>(null);
 const KEY = "theme-mode";
 
-function getSystemTheme(): "light" | "dark" {
+function getSystemTheme(): Resolved {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function applyTheme(resolved: "light" | "dark") {
+function applyTheme(resolved: Resolved) {
   document.documentElement.classList.toggle("dark", resolved === "dark");
 }
 
+function readSavedMode(): ThemeMode {
+  try {
+    const v = localStorage.getItem(KEY) as ThemeMode | null;
+    return v === "light" || v === "dark" || v === "system" ? v : "system";
+  } catch {
+    return "system";
+  }
+}
+
+function resolveMode(mode: ThemeMode): Resolved {
+  return mode === "system" ? getSystemTheme() : mode;
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setModeState] = React.useState<ThemeMode>("system");
-  const [resolved, setResolved] = React.useState<"light" | "dark">("light");
+  const [mode, setModeState] = React.useState<ThemeMode>(() => readSavedMode());
 
-  React.useEffect(() => {
-    const saved = (localStorage.getItem(KEY) as ThemeMode | null) ?? "system";
-    setModeState(saved);
-  }, []);
+  const [resolved, setResolved] = React.useState<Resolved>(() =>
+    typeof window === "undefined" ? "light" : resolveMode(readSavedMode())
+  );
 
+  // ✅ Apply before paint (prevents first-render light)
+  React.useLayoutEffect(() => {
+    const r = resolveMode(mode);
+    setResolved(r);
+    applyTheme(r);
+  }, [mode]);
+
+  // ✅ Watch system changes only when mode === system
   React.useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const computeResolved = () => (mode === "system" ? getSystemTheme() : mode);
-
-    const run = () => {
-      const r = computeResolved();
+    const onChange = () => {
+      if (mode !== "system") return;
+      const r = getSystemTheme();
       setResolved(r);
       applyTheme(r);
-    };
-
-    run();
-
-    const onChange = () => {
-      if (mode === "system") run();
     };
 
     if (mq.addEventListener) mq.addEventListener("change", onChange);
@@ -58,12 +71,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setMode = (m: ThemeMode) => {
     setModeState(m);
-    localStorage.setItem(KEY, m);
+    try {
+      localStorage.setItem(KEY, m);
+    } catch {
+      // ignore
+    }
   };
 
   const toggle = () => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setMode(isDark ? "light" : "dark");
+    setMode(resolved === "dark" ? "light" : "dark");
   };
 
   return (

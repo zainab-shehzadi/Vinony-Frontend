@@ -3,8 +3,11 @@ import {
   Paperclip,
   Mic,
   ArrowUp,
+  Globe,
+  FileText,
+  Zap,
+  GraduationCap,
   ChevronDown,
-  Plus,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -12,9 +15,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import {Actions} from "@/constants/aiModelData";
-
 interface IModel {
   id: string;
   icon: React.ReactNode;
@@ -27,7 +27,6 @@ interface IProp {
   setActiveVersion: (v: string) => void;
   reqGenerate: Boolean;
   setReqGenerate: (v: Boolean) => void;
-  setActiveHistory: (a: Boolean) => void
 }
 
 export function ChatInput({
@@ -36,14 +35,15 @@ export function ChatInput({
   setActiveVersion,
   reqGenerate,
   setReqGenerate,
-  setActiveHistory
 }: IProp) {
   const [inputValue, setInputValue] = useState("");
   const hasVersions =
     selectedModel.versions && selectedModel.versions.length > 0;
 
   return (
-    <div className={`w-full mx-auto p-4 border border-[#CBD5E1] rounded-lg`}>
+    <div
+      className={`w-full mx-auto p-4 border border-[#CBD5E1] rounded-lg`}
+    >
       <div className="inline-block mb-2 ml-2">
         {hasVersions ? (
           <DropdownMenu>
@@ -86,27 +86,8 @@ export function ChatInput({
 
       {/* Main Input Box */}
       <div className="bg-[#F8FAFC] rounded-lg p-2 shadow-[inset_0_1px_4px_rgba(0,0,0,0.05)]">
-        <div className="flex items-center gap-3 sm:px-3 py-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-white text-primaryDark rounded-full w-8 h-8 hover:bg-slate-50 sm:hidden">
-                <Plus size={20} strokeWidth={3} />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              {Actions.map((action, index)=>(
-              <DropdownMenuItem>
-                <ActionButton
-                  icon={action.icon}
-                  label={action.baseLabel}
-                  key={index}
-                />
-              </DropdownMenuItem>
-            ))}
-              
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Paperclip size={20} className="text-primaryDark cursor-pointer hidden sm:block" />
+        <div className="flex items-center gap-3 px-3 py-2">
+          <Paperclip size={20} className="text-primaryDark cursor-pointer" />
           <input
             type="text"
             value={inputValue}
@@ -118,21 +99,18 @@ export function ChatInput({
             <Mic size={20} className="text-[#94A3B8]" />
             <button
               className={`p-2 rounded-full text-white btn-gradient transition-all ${inputValue ? "opacity-100 shadow-md" : "opacity-50"}`}
-              onClick={() => {
-                setInputValue("");
-                setReqGenerate(true);
-                setActiveHistory(false);
-              }}
+              onClick={() => setReqGenerate(true)}
             >
               <ArrowUp size={20} strokeWidth={3} />
             </button>
           </div>
         </div>
         {!reqGenerate && (
-          <div className="hidden sm:flex items-center gap-4 sm:px-3 py-2 mt-1 overflow-x-auto no-scrollbar ">
-            {Actions.slice(1).map((action, index)=>(
-              <ActionButton icon={action.icon} label={action.baseLabel} key={index}/>
-            ))}
+          <div className="flex items-center gap-4 px-3 py-2 mt-1 overflow-x-auto no-scrollbar">
+            <ActionButton icon={<Globe size={16} />} label="Search" />
+            <ActionButton icon={<FileText size={16} />} label="My Prompts" />
+            <ActionButton icon={<Zap size={16} />} label="Deep Research" />
+            <ActionButton icon={<GraduationCap size={16} />} label="Study" />
           </div>
         )}
       </div>

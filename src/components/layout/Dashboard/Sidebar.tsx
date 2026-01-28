@@ -18,11 +18,10 @@ import { menuItems } from "@/constants/sideBarData";
 interface IProp {
   toggle: boolean;
   setActiveHistory: (a: Boolean) => void;
-  setActiveView: (a: String)=> void;
-  setReqGenerate: (a: Boolean)=> void;
 }
 
-const Sidebar = ({ toggle, setActiveHistory, setActiveView, setReqGenerate }: IProp) => {
+
+const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [recentChats, ] = useState([
@@ -99,7 +98,6 @@ const Sidebar = ({ toggle, setActiveHistory, setActiveView, setReqGenerate }: IP
                     {item.type === "chat" && (
                       <button
                         className={`text-[12px] ${hasHistory ? "text-primary" : "text-accent"} font-medium flex items-center gap-1 py-2 hover:opacity-80 transition-opacity1`}
-                        onClick={() => setActiveHistory(true)}
                       >
                         New Project
                       </button>
@@ -126,12 +124,13 @@ const Sidebar = ({ toggle, setActiveHistory, setActiveView, setReqGenerate }: IP
                             </AccordionTrigger>
 
                             {/* Accordion Content for History List */}
-                            <AccordionContent className="pt-1 pb-0 h-38 border-none overflow-y-auto hide-scrollbar">
+                            <AccordionContent className="pt-1 pb-0 h-36 border-none overflow-y-auto hide-scrollbar">
                               <div className="space-y-1 mt-1">
-                                {recentChats.slice(0, 4).map((chat, i) => (
+                                {recentChats.map((chat, i) => (
                                   <div
                                     key={i}
                                     className="group relative flex items-center justify-between px-3 py-1 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors"
+                                    onClick={() => setActiveHistory(true)}
                                   >
                                     <span className="text-[12px] text-accent truncate pr-4">
                                       {chat}
@@ -154,13 +153,9 @@ const Sidebar = ({ toggle, setActiveHistory, setActiveView, setReqGenerate }: IP
                       item.subItems.map((sub, i) => (
                         <button
                           key={i}
-                          onClick={() => {
-                            setActiveView(sub.view)
-                            setReqGenerate(false)
-                          }}
                           className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
                         >
-                          {sub.label}
+                          {sub}
                         </button>
                       ))}
                   </div>

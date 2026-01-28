@@ -1,6 +1,26 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import SectionHeading from "@/components/common/SectionHeading";
 import { GetStartedSectionProps } from "@/types/landingPage";
+
+function renderDescriptionWithCreditHighlight(text: string) {
+  // highlights: "4 credit", "4 credits", "12 credit", etc.
+  const re = /(\b\d+\b\s*credits?\b)/gi;
+
+  return text.split(re).map((part, i) => {
+    if (re.test(part)) {
+      // reset lastIndex side-effect (because test() on /g/)
+      re.lastIndex = 0;
+
+      return (
+        <span key={i} className="text-primary font-bold">
+          {part}
+        </span>
+      );
+    }
+    return <React.Fragment key={i}>{part}</React.Fragment>;
+  });
+}
 
 export function LeftCopy({
   description,
@@ -15,7 +35,7 @@ export function LeftCopy({
     Array.isArray(bestSuitedFor) && bestSuitedFor.length > 0;
 
   return (
-    <div className={cn("pt-14 lg:pt-0", className)}>
+    <div className={cn("pt-14 lg:pt-0 pl-4 md:pl-0", className)}>
       <SectionHeading
         eyebrow={eyebrow}
         title={title}
@@ -26,13 +46,15 @@ export function LeftCopy({
 
       <p
         className={cn(
-          "md:mt-6 lg:mt-10 max-w-2xl text-sm md:text-base lg:text-[20px]",
+          "md:mt-6 lg:mt-10  max-w-2xl text-sm md:text-base lg:text-[20px]",
           "leading-6 md:leading-7 lg:leading-[30px]",
           "text-foreground",
           descriptionClassName
         )}
       >
-        {description}
+        {typeof description === "string"
+          ? renderDescriptionWithCreditHighlight(description)
+          : description}
       </p>
 
       {showBestSuited && (

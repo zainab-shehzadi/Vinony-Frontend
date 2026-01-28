@@ -20,8 +20,8 @@ export default function SectionHeading({
         <div className={cn("text-center", className)}>
             <p
                 className={cn(
-                    "text-primary font-semibold tracking-[0.16em]",
-                    "text-sm md:text-base lg:text-[24px]",
+                    "text-gradient  font-semibold tracking-[0.16em]",
+                    "text-sm md:text-xl lg:text-[24px]",
                     eyebrowClassName
                 )}
             >
@@ -30,9 +30,10 @@ export default function SectionHeading({
 
             <h2
                 className={cn(
-                    "mt-2 md:mt-4 lg:mt-6 font-semibold leading-[1.08] text-foreground",
-                    "mx-auto w-full max-w-[700px]", 
-                    "text-3xl md:text-4xl xl:text-[48px] text-center",
+                    "mt-2 lg:mt-4  font-bold text-foreground text-center",
+                    "mx-auto w-full max-w-[700px]",
+                    "text-2xl md:text-4xl xl:text-[48px]",
+                    "leading-tight md:leading-snug xl:leading-[1.15]",
                     titleClassName
                 )}
             >

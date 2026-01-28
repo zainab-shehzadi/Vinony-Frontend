@@ -1,27 +1,24 @@
 import { useState } from "react";
 import {
+  Paperclip,
   CircleDollarSign,
-  Plus,
+  Hd,
 } from "lucide-react";
-import { Image_Actions } from "@/constants/aiModelData";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Button } from "@/components/ui/button";
+import ratio from "@/assets/Vector.png";
+import style from "@/assets/Style.png";
 
-interface IProp{
-  setReqGenerate: (a: Boolean)=> void;
-}
-
-export default function CreationInput({setReqGenerate}: IProp) {
+export default function CreationInput() {
   const [inputValue, setInputValue] = useState<string>("");
 
   return (
-    <div className="w-full mx-auto p-4 rounded-xl bg-white">
+    <div className="w-full  p-4 rounded-xl bg-white">
       <p className="font-bold text-[16px] text-primaryDark mb-2">Prompt</p>
 
       <div className="bg-[#F8FAFC] rounded-lg p-2 shadow-[inset_0_1px_4px_rgba(0,0,0,0.05)]">
         {/* Upper Part: Input and Paperclip */}
-        <div className="flex items-start w-full px-3 py-2">
+        <div className="flex items-start w-full gap-3 px-3 py-2">
           <label className="mt-2 cursor-pointer hover:opacity-70 transition-opacity">
+            <Paperclip size={20} className="text-primaryDark" />
             <input type="file" className="hidden" />
           </label>
 
@@ -34,40 +31,21 @@ export default function CreationInput({setReqGenerate}: IProp) {
         </div>
 
         {/* Lower Part: Actions and Generate Button */}
-        <div className="flex sm:flex-row items-center justify-between gap-4 mt-2 px-3 pb-1">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 px-2 pb-1">
           {/* Action Buttons Group */}
-          <div className="flex sm:hidden items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
-            <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-white text-primaryDark rounded-full w-8 h-8 hover:bg-slate-50 ">
-                <Plus size={20} strokeWidth={3} />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              {Image_Actions.map((action, index)=>(
-              <DropdownMenuItem>
-                <ActionButton icon={action.icon} label={action.baseLabel} key={index} />
-              </DropdownMenuItem>
-            ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
-             {Image_Actions.map((action, index)=>(
-              <ActionButton icon={action.icon} label={action.baseLabel} key={index} />
-            ))}
+          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
+            <ActionButton icon={<Paperclip size={18} />} label="Attach" />
+            <ActionButton icon={<img src={style}/>} label="Style" />
+            <ActionButton icon={<Hd size={18} />} label="Quality" />
+            <ActionButton icon={<img src={ratio}/>} label="Aspect Ratio" />
           </div>
 
           {/* Generate Button */}
           <button
             disabled={!inputValue}
-            onClick={() => {
-              setInputValue(" ")
-              setReqGenerate(true)
-            }}
             className={`
               flex items-center justify-center gap-2 
-              sm:w-44 px-5 py-2.5 
+              w-full sm:w-44 px-5 py-2.5 
               rounded-xl font-bold transition-all duration-200 whitespace-nowrap
           ${
           inputValue

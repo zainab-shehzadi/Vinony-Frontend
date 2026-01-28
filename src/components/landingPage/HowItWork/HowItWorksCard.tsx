@@ -25,7 +25,7 @@ export default function HowItWorksCard({
         <div className="pointer-events-none absolute -bottom-3 left-8 right-8 h-6 rounded-full" />
 
         <div
-          className={cn("relative h-full overflow-hidden rounded-2xl p-[2px]", "bg-slate-100")}
+          className={cn("relative h-full md:h-[320px] lg:h-[340px] xl:h-full overflow-hidden rounded-2xl p-[2px]", "bg-slate-100")}
           style={{ clipPath: CLIP }}
         >
           <div
@@ -47,12 +47,11 @@ export default function HowItWorksCard({
               <div className="absolute left-0 right-0 top-0 h-6 bg-white dark:bg-[#0D091D]/50" />
             </div>
 
-            {/* content */}
-            <div className="flex h-full flex-col p-5 sm:p-6 xl:p-8 xl:pt-10">
+            <div className="flex h-full flex-col p-6 xl:p-8 xl:pt-10">
               <div
                 className={cn(
                   "inline-flex items-center justify-center rounded-full bg-[#141223] dark:bg-[#32284F]/50",
-                  "h-12 w-12 md:h-14 md:w-14 xl:h-16 xl:w-16"
+                  "h-12 w-12 md:h-14 md:w-14 xl:h-16 xl:w-16 xl:mt-6"
                 )}
               >
                 <img
@@ -64,7 +63,7 @@ export default function HowItWorksCard({
                 />
               </div>
 
-              <h3 className="mt-5 xl:mt-10 text-[18px] font-semibold leading-tight text-foreground  xl:text-[24px]">
+              <h3 className="mt-5 lg:mt-10 xl:mt-14 text-[18px] font-semibold leading-tight text-foreground  xl:text-[24px]">
                 {title}
               </h3>
 
@@ -72,7 +71,6 @@ export default function HowItWorksCard({
                 {description}
               </p>
 
-              {/* ✅ pushes bottom to align */}
               <div className="mt-auto" />
             </div>
           </div>

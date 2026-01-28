@@ -6,8 +6,8 @@ type Props = {
 
 export default function AuthShell({ children }: Props) {
   return (
-    <div className="auth-page auth-bg">
-      <div className="w-full flex justify-center">{children}</div>
+    <div className="auth-page auth-bg ">
+      <div className="w-full flex justify-center ">{children}</div>
     </div>
   );
 }
