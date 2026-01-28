@@ -57,7 +57,7 @@ const Sidebar = ({ toggle, setActiveHistory, setActiveView, setReqGenerate }: IP
       <div className="flex items-center justify-center gap-2 px-2 mt-5 mb-10">
         <p className="text-xl font-semibold text-primary">LOGO HERE</p>
       </div>
-
+      {/* Sidebar heading */}
       <div className="text-[12px] font-normal text-accent tracking-widest px-2 mb-2 uppercase">
         Main Menu
       </div>
