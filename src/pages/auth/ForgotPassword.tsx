@@ -35,7 +35,7 @@ export default function ForgotPassword() {
     <AuthShell>
       <AuthCard
         title="Forgot Password"
-        subtitle="Enter the email address or mobile phone number associated with your account."
+        subtitle="Enter the email address associated with your account."
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
@@ -44,7 +44,7 @@ export default function ForgotPassword() {
             </Label>
             <Input
               id="email"
-              placeholder="Enter email"
+              placeholder="Enter your email address"
               className={`auth-input placeholder:text-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
                 }`}
               autoComplete="email"

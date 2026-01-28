@@ -2,36 +2,27 @@
 
 import { cn } from "@/lib/utils";
 import HowItWorksCard from "./HowItWorksCard";
-import { HOW_IT_WORKS } from "@/constants/landingPage";
 import SectionHeading from "@/components/common/SectionHeading";
+import { HOW_IT_WORKS1 } from "@/constants/landingPage";
 
 type Props = {
   className?: string;
+  limit?: number; // ✅ if passed -> show only that many
 };
 
-export default function HowItWorksSection({ className }: Props) {
+export default function HowItWorksSection({ className, limit }: Props) {
+  const items =
+    typeof limit === "number" ? HOW_IT_WORKS1.slice(0, Math.max(0, limit)) : HOW_IT_WORKS1;
+
   return (
-    <section className={cn("w-full bg-whit", className)}>
-      <div className=" py-14 md:py-16 lg:py-24">
-        <div className="mb-10 text-center sm:mb-12">
-          <SectionHeading
-            eyebrow="Why use gpt 4.0"
-            title="Best Use Cases"
-          />
+    <section className={cn("w-full bg-white dark:bg-background", className)}>
+      <div className="py-14 md:py-16 lg:py-24">
+        <div className="mb-6 lg:mb-10 text-center">
+          <SectionHeading eyebrow="Why use gpt 4.0" title="Best Use Cases" />
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {HOW_IT_WORKS.map((item) => (
-            <HowItWorksCard
-              key={item.title}
-              title={item.title}
-              description={item.description}
-              iconSrc={item.iconSrc}
-            />
-          ))}
-        </div>
-           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6 md:mt-16">
-          {HOW_IT_WORKS.map((item) => (
+          {items.map((item) => (
             <HowItWorksCard
               key={item.title}
               title={item.title}

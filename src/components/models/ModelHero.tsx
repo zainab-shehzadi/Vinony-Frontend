@@ -16,7 +16,7 @@ export default function ModelHero({ model, onTry }: Props) {
         {model.title}
       </h1>
 
-      <p className="mt-4 text-sm text-slate-600 md:text-base lg:mt-6 lg:text-[32px]">
+      <p className="mt-4 text-sm text-slate-600 dark:text-slate-200 md:text-base lg:mt-6 lg:text-[32px]">
         by {model.provider}
       </p>
 
@@ -29,10 +29,10 @@ export default function ModelHero({ model, onTry }: Props) {
       <div className="mt-6 flex items-center justify-center">
         <button
           type="button"
-          className="btn-gradient rounded-xl px-24 py-3 text-sm font-medium text-white md:px-32 md:text-base lg:text-lg"
+          className="btn-gradient rounded-xl px-24 py-3 text-sm font-medium text-white  md:text-base lg:text-lg"
           onClick={onTry}
         >
-          {model.ctaLabel ?? `Try ${model.title}`}
+          {model.ctaLabel ? `${model.ctaLabel} ${model.title}` : `Try ${model.title}`}
         </button>
       </div>
     </div>

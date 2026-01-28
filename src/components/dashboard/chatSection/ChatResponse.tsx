@@ -67,7 +67,7 @@ const ChatResponse: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans">
-      <div className="p-4 mx-auto space-y-8">
+      <div className=" p-4 mx-auto space-y-8">
         {messages.map((msg) => {
           const hasVersions = msg.versions && msg.versions.length > 0;
 

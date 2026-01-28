@@ -34,7 +34,7 @@ export default function VinonyFaq({
 
     return (
         <section>
-            <div className="pt-10 md:pt-16 lg:pt-20">
+            <div className="pt-10 md:pt-16">
                 <SectionHeading
                     eyebrow="Vinony Related Questions"
                     title="Frequently Asked Questions"

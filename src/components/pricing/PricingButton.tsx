@@ -30,7 +30,7 @@ export default function PricingButton({
       disabled={disabled}
       onClick={handleClick}
       className={cn(
-        "inline-flex h-14 w-full items-center justify-center rounded-lg px-4 text-sm lg:text-base xl:text-lg font-semibold transition",
+        "inline-flex h-10 lg:h-12 xl:h-14 w-full items-center justify-center rounded-lg px-4 text-sm lg:text-base xl:text-lg font-semibold transition",
         "border border-border",
         "btn-gradient text-primary-foreground",
         "disabled:cursor-not-allowed disabled:opacity-60",

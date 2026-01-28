@@ -22,7 +22,7 @@ function PillButton({
             className={cn(
                 "shrink-0 inline-flex items-center justify-center select-none",
                 "h-[40px] w-[150px] px-6 text-[15px]",
-                "md:h-[66px] md:w-[228px] sm:px-10 sm:text-base",
+                "md:h-[60px] md:w-[200px]  sm:text-base",
                 "md:text-lg",
                 "rounded-full border-2 transition",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
@@ -33,7 +33,7 @@ function PillButton({
             aria-pressed={active}
             title={item.label}
         >
-            <span className="truncate whitespace-nowrap">{item.label}</span>
+            <span className="truncate whitespace-nowrap ">{item.label}</span>
         </button>
     );
 }
@@ -59,7 +59,6 @@ export default function ModelsMarquee({
 
     const safeItems = React.useMemo(() => {
         const list = items ?? [];
-        // Ensures smooth continuous loop
         return list.length >= 6 ? list : [...list, ...list, ...list].slice(0, 10);
     }, [items]);
 
@@ -70,7 +69,7 @@ export default function ModelsMarquee({
 
     return (
         <section className={cn("w-full bg-white dark:bg-background", className)}>
-            <div className=" py-14 md:py-20">
+            <div className=" pt-16 md:pt-32 xl:pt-48">
 
                 <SectionHeading
                     eyebrow="VINONY UNLOCKS THE POTENTIAL Ai"

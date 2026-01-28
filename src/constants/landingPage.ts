@@ -16,12 +16,50 @@ export const HOW_IT_WORKS = [
   {
     title: "Reasoning & problem-solving",
     description:
-      "GPT-4.0 can analyze scenarios, weigh trade-offs, and provide step-by-step reasoning, making it suitable for strategic and analytical workflows.",
+      "GPT-4.0 can analyze scenarios, weigh trade-offs, and provide step-by-step reasoning, making it suitable for strategic.",
     iconSrc: "/bar.svg",
   },
+ 
 ];
 
-
+export const HOW_IT_WORKS1 = [
+  {
+    title: "Advanced conversational AI",
+    description:
+      "GPT-4.0 is ideal for building chat assistants that must handle complex user intent, follow detailed policies, and maintain conversational context over long sessions.",
+    iconSrc: "/Vector.svg",
+  },
+  {
+    title: "Professional content creation",
+    description:
+      "The model performs exceptionally well at producing long, coherent, and well-structured content.",
+    iconSrc: "/Group.svg",
+  },
+  {
+    title: "Reasoning & problem-solving",
+    description:
+      "GPT-4.0 can analyze scenarios, weigh trade-offs, and provide step-by-step reasoning, making it suitable for strategic.",
+    iconSrc: "/bar.svg",
+  },
+  {
+    title: "Code understanding",
+    description:
+      "GPT-4.0 can read, explain, refactor, and generate code across multiple programming languages with strong contextual awareness.",
+    iconSrc: "/Vector.svg",
+  },
+  {
+    title: "Agent-based workflows",
+    description:
+      "Because of its reasoning depth, GPT-4.0 is commonly used as the core brain for AI agents that plan tasks, call tools, and execute multi-step workflows.",
+    iconSrc: "/bar.svg",
+  },
+  {
+    title: "Assistance",
+    description:
+      "Ideal for logic-heavy tasks, decision trees, and analytical workflows.",
+    iconSrc: "/Group.svg",
+  },
+];
 
 export const MODELS_SHOWCASE_CONTENT: ModelsShowcaseContent = {
   heading: "100+ models, one\nworkspace.",
@@ -63,5 +101,57 @@ export const TESTIMONIALS: TestimonialItem[] = [
     name: "Guy Hawkins",
     role: "Nursing Assistant",
     avatarSrc: "/profile.svg",
+  },
+];
+
+
+// src/constants/aiProviders.ts
+
+export type AiProvider = {
+  id: string;
+  name: string;
+  // If you have svg/png in /public, keep as "/images/....svg"
+  logoSrc: string;
+  logoAlt?: string;
+  // Optional per-logo sizing tweaks
+  className?: string;
+};
+
+export const AI_PROVIDERS: AiProvider[] = [
+  {
+    id: "amazon",
+    name: "Amazon",
+    logoSrc: "/amazon.svg",
+    className: "h-6 ",
+  },
+  {
+    id: "tunein",
+    name: "TuneIn",
+    logoSrc: "/tunein.svg",
+    className: "h-6",
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    logoSrc: "/paypal.svg",
+    className: "h-6",
+  },
+  {
+    id: "microsoft",
+    name: "Microsoft",
+    logoSrc: "/microsoft.svg",
+    className: "h-6",
+  },
+  {
+    id: "linkedin",
+    name: "LinkedIn",
+    logoSrc: "/linkdin.svg",
+    className: "h-6 ",
+  },
+  {
+    id: "xbox",
+    name: "Xbox One",
+    logoSrc: "/Xbox.svg",
+    className: "h-6",
   },
 ];

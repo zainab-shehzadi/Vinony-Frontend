@@ -2,28 +2,29 @@ import * as React from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type Props = React.ComponentPropsWithoutRef<"input"> & {
   error?: string;
 };
 
 const PasswordField = React.forwardRef<HTMLInputElement, Props>(
-  ({ error, className, ...props }, ref) => {
+  ({ error, className, placeholder, ...props }, ref) => {
     const [show, setShow] = React.useState(false);
 
     return (
       <div className="space-y-1">
         <div className="relative">
           <Input
-            ref={ref} 
-            {...props} 
+            ref={ref}
+            {...props}
             type={show ? "text" : "password"}
-            placeholder="Enter Password"
-            className={[
-              "auth-input pr-10",
-              error ? "border-red-500 focus-visible:ring-red-500" : "",
-              className ?? "placeholder:text-sm",
-            ].join(" ")}
+            placeholder={placeholder ?? "Enter new password"}
+            className={cn(
+              "auth-input pr-10 placeholder:text-sm",
+              error && "border-red-500 focus-visible:ring-red-500",
+              className
+            )}
           />
 
           <Button
@@ -31,7 +32,7 @@ const PasswordField = React.forwardRef<HTMLInputElement, Props>(
             variant="ghost"
             size="icon"
             onClick={() => setShow((s) => !s)}
-            className="absolute right-1 top-1/2 -translate-y-1/2  text-black hover:text-gray-700"
+            className="absolute right-1 top-1/2 -translate-y-1/2 text-black hover:text-gray-700"
             aria-label={show ? "Hide password" : "Show password"}
           >
             {show ? <EyeOff size={24} /> : <Eye size={24} />}

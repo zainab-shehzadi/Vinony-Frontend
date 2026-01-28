@@ -16,9 +16,9 @@ export default function GetStartedSection({
   bestSuitedFor,
 }: GetStartedSectionProps) {
   return (
-    <section className={cn("w-full py-10 xl:pt-10", className)}>
+    <section className={cn("w-full pt-2 md:pt-10 xl:pt-10", className)}>
       <NotchedShell>
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] pl-6 md:pl-10">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]  md:pl-10">
           <LeftCopy eyebrow={eyebrow} title={title} description={description} bestSuitedFor={bestSuitedFor}/>
           <RightPreview src={imageSrc} alt={imageAlt} />
         </div>
