@@ -18,7 +18,6 @@ import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
 import NotFound from "@/pages/notFound";
 import TermAndCondition from "@/pages/legal/TermsAndConditions";
 import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
-import NotFound from "@/pages/notFound";
 import VideoSection from "@/pages/dashboard/videos/VideoSection";
 import AgentSection from "@/pages/dashboard/agents/AgentSection";
 import BillingSection from "@/pages/dashboard/billings/BillingSection";

@@ -1,4 +1,5 @@
 import {
+  Brain,
   Clock4,
   FileText,
   Globe,
@@ -8,6 +9,7 @@ import {
   Search,
   Sparkles,
   Wand2,
+  Zap,
 } from "lucide-react";
 import soraImage1 from "@/assets/17c52441521434f4c2444cb53aad60b06a29e713.png";
 import soraImage2 from "@/assets/4f7f68c012060f5e4375ab6f34883192ca33c2b1.png";
