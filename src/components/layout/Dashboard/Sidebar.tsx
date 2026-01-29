@@ -41,7 +41,6 @@ const Sidebar = ({
     "UI Design Guidelines",
   ]);
 
-  // This piece of code is for active route
   const getActiveAccordion = () => {
     if (location.pathname === PATH.CHAT) return "item-0";
     if (location.pathname === PATH.IMAGE) return "item-1";
