@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Receipt,
-  Settings,
-  MoreHorizontal,
-} from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -32,11 +28,11 @@ const Sidebar = ({
   setActiveView,
   setReqGenerate,
   setReqVideoGenerate,
-  setReqChatGenerate
+  setReqChatGenerate,
 }: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [recentChats, ] = useState([
+  const [recentChats] = useState([
     "How to be a better person",
     "Project Research Alpha",
     "UI Design Guidelines",
@@ -45,10 +41,13 @@ const Sidebar = ({
     "UI Design Guidelines",
   ]);
 
-  // This piece of code is for active route
   const getActiveAccordion = () => {
     if (location.pathname === PATH.CHAT) return "item-0";
     if (location.pathname === PATH.IMAGE) return "item-1";
+    if (location.pathname === PATH.VIDEO) return "item-2";
+    if (location.pathname === PATH.AGENT) return "item-3";
+    if (location.pathname === PATH.BILLING) return "item-4";
+    if (location.pathname === PATH.SETTING) return "item-5";
     return "";
   };
   const [activeAccordion, setActiveAccordion] = useState(getActiveAccordion());
@@ -78,13 +77,13 @@ const Sidebar = ({
 
   return (
     <div
-      className={`fixed z-50 w-64 h-full bg-white border-r flex flex-col p-4 lg:relative transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${toggle ? "translate-x-0" : "-translate-x-full"}`}
+      className={`fixed z-50 w-64 h-full bg-background border-r border-border flex flex-col p-4 lg:relative transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${toggle ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Logo Section */}
       <div className="flex items-center justify-center gap-2 px-2 mt-5 mb-10">
         <p className="text-xl font-semibold text-primary">LOGO HERE</p>
       </div>
-
+      {/* Sidebar heading */}
       <div className="text-[12px] font-normal text-accent tracking-widest px-2 mb-2 uppercase">
         Main Menu
       </div>
@@ -99,25 +98,48 @@ const Sidebar = ({
           className="w-full border-none"
         >
           {menuItems.map((item, index) => {
+            let hasSubItems = item.subItems && item.subItems.length > 0;
+            const content = (
+              <div
+                className={`flex items-center gap-3 font-medium ${item.path && isActive(item.path) ? "text-primary" : "text-accent"}`}
+              >
+                {item.icon}
+                <span
+                  className={`text-[14px] transition-all ${item.path && isActive(item.path) && "font-semibold text-[16px]"}`}
+                >
+                  {item.title}
+                </span>
+              </div>
+            );
             return (
               <AccordionItem
                 value={`item-${index}`}
                 key={index}
-                className="border-none group overflow-hidden rounded-lg  transition-all data-[state=open]:bg-[#F3F4F8]"
+                className="border-none group overflow-hidden rounded-lg  transition-all data-[state=open]:bg-secondary-bg"
               >
-                <AccordionTrigger
-                  onClick={() => item.path && navigate(item.path)}
-                  className={`hover:no-underline py-3 px-2 mt-2 rounded-lg transition-all ${item.path && isActive(item.path) ? "data-[state=open]:bg-[#F3F4F8] data-[state=open]:text-primary group" : "hover:bg-slate-50 text-accent"}`}
-                >
-                  <div
-                    className={`flex items-center gap-3 text-accent font-medium ${item.path && isActive(item.path) ? "group-data-[state=open]:text-primary" : "text-accent"}`}
+                {hasSubItems ? (
+                  // if subItems exist then standard AccordionTrigger
+                  <AccordionTrigger
+                    onClick={() => item.path && navigate(item.path)}
+                    className={`hover:no-underline py-3 px-2 mt-2 rounded-lg transition-all ${
+                      item.path && isActive(item.path)
+                        ? "bg-secondary-bg text-primary"
+                        : "hover:bg-slate-50 text-accent"
+                    }`}
                   >
-                    {item.icon}
-                    <span
-                      className={`text-[14px] transition-all ${item.path && isActive(item.path) && "group-data-[state=open]:font-semibold group-data-[state=open]:text-[16px]"}`}
-                    >
-                      {item.title}
-                    </span>
+                    {content}
+                  </AccordionTrigger>
+                ) : (
+                  // if subItems not exist then simple Button (No Arrow)
+                  <div
+                    onClick={() => item.path && navigate(item.path)}
+                    className={`flex items-center justify-between cursor-pointer py-3 px-2 mt-2 rounded-lg transition-all ${
+                      item.path && isActive(item.path)
+                        ? "bg-secondary-bg text-primary"
+                        : "hover:bg-slate-50 text-accent"
+                    }`}
+                  >
+                    {content}
                   </div>
                 )}
                 {hasSubItems && (
@@ -127,18 +149,25 @@ const Sidebar = ({
                         <button
                           className={`text-[12px] text-accent font-normal hover:text-primary flex items-center gap-1 py-2`}
                           onClick={() => {
-                            setActiveHistory(!activeHistory)
-                            setReqChatGenerate(false)
+                            setActiveHistory(!activeHistory);
+                            setReqChatGenerate(false);
                           }}
                         >
-                          <AccordionItem
-                            value="recent-history"
-                            className="border-none"
+                          New Project
+                        </button>
+                      )}
+
+                      {/* If we have chat history then show history */}
+                      {item.type === "chat" && hasHistory && (
+                        <div className="mt-2">
+                          <Accordion
+                            type="single"
+                            collapsible
+                            className="w-full border-none"
                           >
-                            {/* Accordion Trigger for Recent Chats */}
-                            <AccordionTrigger
-                              className="flex items-center gap-1 py-1 px-0 text-[12px] font-normal text-accent tracking-tighter hover:no-underline hover:text-slate-600 transition-colors"
-                              onClick={() => setActiveHistory(false)}
+                            <AccordionItem
+                              value="recent-history"
+                              className="border-none"
                             >
                               {/* Accordion Trigger for Recent Chats */}
                               <AccordionTrigger
@@ -177,7 +206,7 @@ const Sidebar = ({
                         item.subItems?.map((sub, i) => (
                           <button
                             key={i}
-                            onClick={()=> handleTabClick(sub)}
+                            onClick={() => handleTabClick(sub)}
                             className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
                           >
                             {sub.label}
@@ -192,7 +221,7 @@ const Sidebar = ({
         </Accordion>
 
         {/* Static Footer Links */}
-        <div className="space-y-1">
+        {/* <div className="space-y-1">
           <button className="flex items-center gap-3 w-full px-2 py-3 text-accent hover:bg-slate-50 rounded-lg transition-colors">
             <Receipt className="w-5 h-5" />
             <span className="text-sm font-medium">Billings</span>
@@ -201,7 +230,7 @@ const Sidebar = ({
             <Settings className="w-5 h-5" />
             <span className="text-sm font-medium">Settings</span>
           </button>
-        </div>
+        </div> */}
       </nav>
 
       {/* Credit Section */}
