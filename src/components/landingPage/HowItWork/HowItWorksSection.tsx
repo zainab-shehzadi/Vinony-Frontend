@@ -11,7 +11,7 @@ type Props = {
 
 export default function HowItWorksSection({ className }: Props) {
   return (
-    <section className={cn("w-full bg-white", className)}>
+    <section className={cn("w-full bg-whit", className)}>
       <div className=" py-14 md:py-16 lg:py-24">
         <div className="mb-10 text-center sm:mb-12">
           <SectionHeading

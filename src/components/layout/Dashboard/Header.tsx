@@ -24,12 +24,12 @@ interface IProp {
 export default function Header({ setToggle, toggle }: IProp) {
   return (
     <>
-      <header className="h-16 w-full border-b flex items-center justify-between px-4 lg:px-6 sticky top-0 z-50">
+      <header className="h-16 w-full border-b border-border flex items-center justify-between px-4 lg:px-6 sticky top-0 z-50">
         {/* Left Side: Workspace Title & Mobile Menu */}
         <div className="flex items-center gap-4">
           {/* Mobile Menu Button (Only visible on small screens) */}
           <div
-            className="lg:hidden cursor-pointer font-semibold text-xl text-primaryDark"
+            className="lg:hidden cursor-pointer font-semibold text-xl text-foreground"
             onClick={() => setToggle(!toggle)}
           >
             <Menu className="w-6 h-6" />
@@ -48,7 +48,7 @@ export default function Header({ setToggle, toggle }: IProp) {
           </div>
 
           <div className="flex items-center border-l border-r pl-1 pr-1">
-            <div className="text-primaryDark w-40 hidden md:flex md:justify-center gap-2 cursor-pointer">
+            <div className="text-foreground w-40 hidden md:flex md:justify-center gap-2 cursor-pointer">
               <CreditCard className="w-6 h-6 text-primary" />
               <span className="text-sm md:text-[16px] font-medium">Upgrade plan</span>
             </div>
@@ -80,7 +80,7 @@ export default function Header({ setToggle, toggle }: IProp) {
 
             <DropdownMenuContent
               align="end"
-              className="w-64 p-2 shadow-xl rounded-xl"
+              className="w-64 p-2 shadow-xl rounded-xl border-border"
             >
               {/* Header Section: User Info */}
               <DropdownMenuLabel className="font-normal p-2">
@@ -92,14 +92,14 @@ export default function Header({ setToggle, toggle }: IProp) {
                   <div className="flex items-center gap-2">
                     <div className="w-[1px] h-6 bg-accent" />{" "}
                     {/* Vertical Line */}
-                    <span className="font-bold text-primaryDark text-base">
+                    <span className="font-bold text-foreground text-base">
                       Michael Smith
                     </span>
                   </div>
                 </div>
 
                 {/* Credit Card Section */}
-                <div className="bg-[#E9DAF8]/50 rounded-xl p-3 border border-purple-100">
+                <div className="bg-card-soft rounded-xl p-3 border-border">
                   <div className="text-[16px] font-semibold text-primary mb-2">
                     Free
                   </div>
@@ -117,17 +117,17 @@ export default function Header({ setToggle, toggle }: IProp) {
                 <DropdownMenuItem className="py-2.5 cursor-pointer text-accent font-medium focus:bg-slate-50 focus:text-[#131316]">
                   Profile
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-slate-100 mx-1" />
+                <DropdownMenuSeparator className="bg-border mx-1" />
 
                 <DropdownMenuItem className="py-2.5 cursor-pointer text-accent font-medium focus:bg-slate-50 focus:text-[#131316]">
                   Terms
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-slate-100 mx-1" />
+                <DropdownMenuSeparator className="bg-border mx-1" />
 
                 <DropdownMenuItem className="py-2.5 cursor-pointer text-accent font-medium focus:bg-slate-50 focus:text-[#131316]">
                   Privacy
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-slate-100 mx-1" />
+                <DropdownMenuSeparator className="bg-border mx-1" />
 
                 <DropdownMenuItem className="py-2.5 cursor-pointer text-accent font-medium focus:bg-slate-50 focus:text-[#131316]">
                   Logout

@@ -8,6 +8,7 @@ export default function DashboardLayout() {
   const [activeHistory, setActiveHistory] = useState<Boolean>(false);
   const [activeView, setActiveView] = useState<String>("");
   const [reqGenerate, setReqGenerate] = useState<Boolean>(false);
+  const [reqVideoGenerate, setReqVideoGenerate] = useState<Boolean>(false);
 
   return (
     <>
@@ -27,7 +28,7 @@ export default function DashboardLayout() {
         <div className="flex flex-col flex-1 min-w-0">
           <Header setToggle={setToggle} toggle={toggle} />
           <main className="flex-1 overflow-auto">
-            <Outlet context={{ activeHistory, setActiveHistory, activeView, reqGenerate, setReqGenerate }} />
+            <Outlet context={{ activeHistory, setActiveHistory, activeView, reqGenerate, setReqGenerate, reqVideoGenerate, setReqVideoGenerate }} />
           </main>
         </div>
       </div>

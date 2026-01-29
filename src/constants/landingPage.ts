@@ -28,6 +28,7 @@ export const MODELS_SHOWCASE_CONTENT: ModelsShowcaseContent = {
   subheading: "Switch models instantly. Keep your history. Track credits\nclearly.",
   ctaLabel: "Explore All Models",
   cardTitle: "Available Models",
+  
 
 };
 export const CTA_BANNER_CONTENT: CtaBannerContent = {
@@ -35,6 +36,7 @@ export const CTA_BANNER_CONTENT: CtaBannerContent = {
   subtitle: "Use one platform for everything.",
   buttonLabel: "Explore All Models",
   backgroundImageSrc: "/Background.png",
+  darkBackgroundImageSrc: "/cta-dark.png", 
 };
 
 export const TESTIMONIALS: TestimonialItem[] = [

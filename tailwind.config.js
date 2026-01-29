@@ -1,3 +1,6 @@
+// tailwind.config.js
+import animate from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -8,26 +11,24 @@ export default {
         sans: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
-        // ✅ keep Tailwind defaults for black/white unless you really want override
-        // black: "#000",
-        // white: "#fff",
-
-        // ✅ Your static palette (fixed)
+        // Static palette (fixed)
         purple: "#BF5AF2",
         yellow: "#FFD60A",
         blue: "#0A84FF",
         cyan: "#64D2FF",
-		    primaryDark: "#16181E",
-		    textMuted: "#475569",
+        primaryDark: "#16181E",
+        textMuted: "#475569",
 
-        // ✅ shadcn-style tokens via CSS vars
+        // Tokens from app.css (global)
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
 
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          soft: "hsl(var(--card-soft)/ <alpha-value>)",
         },
+
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -40,6 +41,7 @@ export default {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          bg: "hsl(var(--secondary-bg))",
         },
 
         muted: {
@@ -47,7 +49,6 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
 
-        // ✅ Accent token (you wanted #818286)
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
@@ -70,5 +71,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 };

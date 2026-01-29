@@ -32,7 +32,7 @@ export default function Chat() {
       <div className="flex-grow overflow-y-auto flex flex-col items-center px-5 py-10 no-scrollbar">
         
         {!reqGenerate && !activeHistory && (
-          <h1 className={`text-2xl md:text-4xl font-semibold text-primaryDark my-auto md:mt-5 mb-10 text-center`}>
+          <h1 className={`text-2xl md:text-4xl font-semibold text-foreground my-auto md:mt-5 mb-10 text-center`}>
             What can I help with?
           </h1>
         )}

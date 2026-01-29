@@ -46,7 +46,7 @@ export default function ResetPassword() {
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="password">
+            <Label className="auth-label text-sm md:text-base" htmlFor="password">
               Password
             </Label>
             <PasswordField
@@ -59,7 +59,7 @@ export default function ResetPassword() {
           </div>
 
           <div className="space-y-1">
-            <Label className="auth-label text-base" htmlFor="confirmPassword">
+            <Label className="auth-label text-sm md:text-base" htmlFor="confirmPassword">
               Confirm Password
             </Label>
             <PasswordField
@@ -70,11 +70,11 @@ export default function ResetPassword() {
             />
           </div>
 
-          <Button type="submit" onClick={() => navigate("/login")}  className="auth-primary-btn h-12 w-full text-lg font-semibold" disabled={isSubmitting}>
+          <Button type="submit" onClick={() => navigate("/login")}  className="auth-primary-btn h-10 md:h-12 w-full text-sm md:text-base font-semibold" disabled={isSubmitting}>
             {isSubmitting ? "Resetting..." : "Reset Password"}
           </Button>
 
-          <div className="text-center md:text-lg text-accent pt-2">
+          <div className="text-center text-sm md:text-lg text-accent md:pt-2">
             Remember Password?{" "}
             <Link to="/login" className="auth-link text-secondary font-medium">
               Sign In

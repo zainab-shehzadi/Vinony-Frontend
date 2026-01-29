@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 function TagPill({ label }: { label: string }) {
     return (
-        <span className="inline-flex items-center rounded-full border border-accent/40 bg-white px-4 py-2 text-sm md:text-base text-[#5E5D66]">
+        <span className="inline-flex items-center rounded-full border border-accent/40 bg-white dark:bg-background px-4 py-2 text-sm md:text-base text-[#5E5D66] dark:text-white">
             {label}
         </span>
     );
@@ -20,7 +20,7 @@ export default function ModelCard({ item, onTry }: Props) {
     };
 
     return (
-        <div className="rounded-2xl border border-accent/20 bg-white p-6 shadow-md">
+        <div className="rounded-2xl border border-accent/20 bg-white dark:bg-background p-6 shadow-md">
             {/* top row */}
             <div className="flex items-start justify-between gap-4">
                 <div>

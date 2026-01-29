@@ -1,49 +1,64 @@
+/* src/app.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------------------------------------
+   Components
+------------------------------------------------------- */
 @layer components {
   .btn-gradient {
-    background: linear-gradient(90deg, var(--btn-grad-from) 0%, var(--btn-grad-to) 100%);
+    box-shadow: none;
+    background: linear-gradient(
+      90deg,
+      var(--btn-grad-from) 0%,
+      var(--btn-grad-to) 100%
+    );
   }
+
   .btn-gradient:hover {
     filter: brightness(0.95);
   }
 
   .auth-primary-btn {
     @apply w-full rounded-xl text-white;
-    background: linear-gradient(90deg, var(--btn-grad-from) 0%, var(--btn-grad-to) 100%);
+    background: linear-gradient(
+      90deg,
+      var(--btn-grad-from) 0%,
+      var(--btn-grad-to) 100%
+    );
   }
+
   .auth-primary-btn:hover {
     filter: brightness(0.95);
   }
 
   .auth-page {
-    @apply w-full flex justify-center px-4 py-20;
+    @apply w-full flex justify-center px-4 pt-10 lg:pt-20 pb-4;
   }
 
   .auth-bg {
-    @apply bg-white;
+    @apply bg-background text-foreground;
   }
 
   .auth-card {
-    @apply w-full max-w-[440px] rounded-lg border bg-white shadow-lg;
+    @apply w-full max-w-[440px] rounded-lg border border-border bg-card text-card-foreground shadow-lg;
   }
 
   .auth-title {
-    @apply text-center text-3xl font-semibold text-black;
+    @apply text-center text-3xl font-semibold text-foreground;
   }
 
   .auth-subtitle {
-    @apply text-center text-sm leading-5 text-accent; /* #818286 */
+    @apply text-center text-sm leading-5 text-accent;
   }
 
   .auth-label {
-    @apply text-base font-semibold leading-5 tracking-normal text-black;
+    @apply text-sm md:text-base font-semibold leading-5 tracking-normal text-foreground;
   }
 
   .auth-input {
-    @apply h-10;
+    @apply h-10 bg-background text-foreground border border-input;
   }
 
   .auth-link {
@@ -55,38 +70,36 @@
   }
 
   .auth-divider {
-    @apply my-4 h-px w-full bg-gray-200;
+    @apply my-4 h-px w-full bg-border;
   }
 }
 
+/* -------------------------------------------------------
+   Global Tokens
+------------------------------------------------------- */
 @layer base {
   :root {
     --background: 0 0% 100%;
-
-    /* ✅ Heading / main text: #21242D */
     --foreground: 225 14% 15%;
 
     --card: 0 0% 100%;
     --card-foreground: 225 14% 15%;
+    --card-soft: 267 65% 92%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 225 14% 15%;
 
-  
-    /* Primary = #805AF5 */
     --primary: 255 89% 66%;
     --primary-foreground: 0 0% 100%;
-
-    /* / Secondary = #2DA5F3 / */
+    --primary-soft: 267 100% 95%;
+    /* ≈ #F1E4FF */
     --secondary: 204 89% 56%;
     --secondary-foreground: 0 0% 100%;
+    --secondary-bg: 0 0% 96%;
 
     --muted: 0 0% 96.1%;
-
-    /* ✅ Subheading / muted text: #6C7278 */
     --muted-foreground: 220 7% 46%;
 
-    /* Accent = can keep as-is or set same as muted-foreground */
     --accent: 220 7% 46%;
     --accent-foreground: 0 0% 100%;
 
@@ -94,14 +107,52 @@
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
+    --input: 210 40% 98%;
+    /* --input: 0 0% 89.8%; */
     --ring: 270 100% 80%;
 
     --radius: 0.5rem;
 
-    /* / Gradient  */
-    --btn-grad-from: #805AF5;
-    --btn-grad-to: #CD99FF;
+    --btn-grad-from: #805af5;
+    --btn-grad-to: #cd99ff;
+  }
+
+  .dark {
+    --background: 240 6% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 6% 10%;
+    --card-foreground: 0 0% 98%;
+    --card-soft: 267 30% 15%;
+
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 255 89% 66%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 255 30% 18%;
+    --secondary: 204 89% 56%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-bg: 240 5% 12%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 220 7% 70%;
+
+    --accent: 220 7% 70%;
+    --accent-foreground: 240 6% 10%;
+
+    --border: 240 4% 22%;
+    --input: 222 15% 16%;
+    /* --input: 240 4% 22%; */
+    --ring: 270 100% 80%;
+
+    --btn-grad-from: #805af5;
+    --btn-grad-to: #cd99ff;
+  }
+
+  /* ✅ Global page colors */
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
-

@@ -14,7 +14,7 @@ export default function Container({ children, className, as = "div" }: Props) {
   return (
     <Comp
       className={cn(
-        "mx-auto w-full bg-white",
+        "mx-auto w-full bg-white dark:bg-background ",
         "pt-10 md:pt-20 lg:pt-32",
         "px-6 md:px-10 lg:px-14 xl:px-20",
         className

@@ -6,16 +6,22 @@ import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/SignUp";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
-import ContactUs from "../pages/support/ContactUs";
-import ImageSection from "../pages/dashboard/images/ImageSection";
-import LandingPage from "../pages/landingPage/page";
-import PricingPage from "../pages/pricing/PricingPage";
-import AIModelPage from "../pages/aIModels/AIModel";
-import ModelDetailPage from "../pages/aIModels/ ModelDetailPage";
-import NotFound from "../pages/notFound";
-import PublicLayout from "../components/layout/PublicLayout";
-import DashboardLayout from "../components/layout/Dashboard/DashboardLayout";
-import Chat from "../pages/dashboard/chat/Chat";
+import PublicLayout from "@/components/layout/PublicLayout";
+import DashboardLayout from "@/components/layout/Dashboard/DashboardLayout";
+import Chat from "@/pages/dashboard/chat/Chat";
+import ContactUs from "@/pages/support/ContactUs";
+import ImageSection from "@/pages/dashboard/images/ImageSection";
+import LandingPage from "@/pages/landingPage/page";
+import PricingPage from "@/pages/pricing/PricingPage";
+import AIModelPage from "@/pages/aIModels/AIModel";
+import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
+import TermAndCondition from "@/pages/legal/TermsAndConditions";
+import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
+import NotFound from "@/pages/notFound";
+import VideoSection from "@/pages/dashboard/videos/VideoSection";
+import AgentSection from "@/pages/dashboard/agents/AgentSection";
+import BillingSection from "@/pages/dashboard/billings/BillingSection";
+import SettingSection from "@/pages/dashboard/settings/SettingSection";
 
 
 export const routes: RouteObject[] = [
@@ -32,8 +38,8 @@ export const routes: RouteObject[] = [
       { path: PATH.AIMODEL, element: <AIModelPage /> },
       { path: PATH.AIMODEL_DETAIL, element: <ModelDetailPage /> },
 
-      // { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
-      // { path: PATH.TERMS, element: <TermsAndConditions /> },
+      { path: PATH.PRIVACY, element: <PrivacyPolicy /> },
+      { path: PATH.TERMS, element: <TermAndCondition /> },
     ],
   },
 
@@ -46,8 +52,10 @@ export const routes: RouteObject[] = [
         children: [
           { path: PATH.CHAT, element: <Chat/> },
           { path: PATH.IMAGE, element: <ImageSection/> },
-          // { path: "/dashboard", element: <Chat /> },
-          // { path: "/dashboard/profile", element: <Profile /> },
+          { path: PATH.VIDEO, element: <VideoSection /> },
+          { path: PATH.AGENT, element: <AgentSection /> },
+          { path: PATH.BILLING, element: <BillingSection /> },
+          { path: PATH.SETTING, element: <SettingSection /> },
         ],
       },
     ],

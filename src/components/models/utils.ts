@@ -8,6 +8,8 @@ export function buildCtaContent(model: ModelDetail): CtaBannerContent {
     subtitle: `Create an account to access ${model.title} and start building with advanced AI.`,
     buttonLabel: `Try ${model.title}`,
     backgroundImageSrc: "/Background.png",
+      darkBackgroundImageSrc: "/cta-dark.png", 
+
   };
 }
 
