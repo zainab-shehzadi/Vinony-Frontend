@@ -17,11 +17,23 @@ import { menuItems } from "@/constants/sideBarData";
 
 interface IProp {
   toggle: boolean;
+  activeHistory: Boolean;
   setActiveHistory: (a: Boolean) => void;
+  setActiveView: (a: String) => void;
+  setReqGenerate: (a: Boolean) => void;
+  setReqVideoGenerate: (a: Boolean) => void;
+  setReqChatGenerate: (a: Boolean) => void;
 }
 
-
-const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
+const Sidebar = ({
+  toggle,
+  activeHistory,
+  setActiveHistory,
+  setActiveView,
+  setReqGenerate,
+  setReqVideoGenerate,
+  setReqChatGenerate
+}: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [recentChats, ] = useState([
@@ -44,6 +56,22 @@ const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
   useEffect(() => {
     setActiveAccordion(getActiveAccordion());
   }, [location.pathname]);
+
+  const handleTabClick = (sub) => {
+    setActiveView(sub.view);
+
+    // Differentiate based on view name or label
+    switch (sub.view) {
+      case "video-history":
+        setReqVideoGenerate(false);
+        break;
+      case "image-history":
+        setReqGenerate(false);
+        break;
+      default:
+        null;
+    }
+  };
 
   const hasHistory = recentChats.length > 0;
   const isActive = (path: string) => location.pathname === path;
@@ -91,25 +119,17 @@ const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
                       {item.title}
                     </span>
                   </div>
-                </AccordionTrigger>
-
-                <AccordionContent className=" pb- px-4 group-data-[state=open]:bg-[#F3F4F8] group-data-[state=open]:rounded-b-lg">
-                  <div className="flex flex-col ml-6">
-                    {item.type === "chat" && (
-                      <button
-                        className={`text-[12px] ${hasHistory ? "text-primary" : "text-accent"} font-medium flex items-center gap-1 py-2 hover:opacity-80 transition-opacity1`}
-                      >
-                        New Project
-                      </button>
-                    )}
-
-                    {/* If we have chat history then show history */}
-                    {item.type === "chat" && hasHistory && (
-                      <div className="mt-2">
-                        <Accordion
-                          type="single"
-                          collapsible
-                          className="w-full border-none"
+                )}
+                {hasSubItems && (
+                  <AccordionContent className=" pb- px-4 group-data-[state=open]:bg-secondary-bg group-data-[state=open]:rounded-b-lg">
+                    <div className="flex flex-col ml-6">
+                      {item.type === "chat" && (
+                        <button
+                          className={`text-[12px] text-accent font-normal hover:text-primary flex items-center gap-1 py-2`}
+                          onClick={() => {
+                            setActiveHistory(!activeHistory)
+                            setReqChatGenerate(false)
+                          }}
                         >
                           <AccordionItem
                             value="recent-history"
@@ -120,46 +140,52 @@ const Sidebar = ({ toggle, setActiveHistory }: IProp) => {
                               className="flex items-center gap-1 py-1 px-0 text-[12px] font-normal text-accent tracking-tighter hover:no-underline hover:text-slate-600 transition-colors"
                               onClick={() => setActiveHistory(false)}
                             >
-                              <span>Recent Chats</span>
-                            </AccordionTrigger>
+                              {/* Accordion Trigger for Recent Chats */}
+                              <AccordionTrigger
+                                className="flex items-center gap-1 py-1 px-0 text-[12px] font-normal text-accent tracking-tighter hover:no-underline hover:text-slate-600 transition-colors"
+                                // onClick={() => setActiveHistory(false)}
+                              >
+                                <span>Recent Chats</span>
+                              </AccordionTrigger>
 
-                            {/* Accordion Content for History List */}
-                            <AccordionContent className="pt-1 pb-0 h-36 border-none overflow-y-auto hide-scrollbar">
-                              <div className="space-y-1 mt-1">
-                                {recentChats.map((chat, i) => (
-                                  <div
-                                    key={i}
-                                    className="group relative flex items-center justify-between px-3 py-1 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors"
-                                    onClick={() => setActiveHistory(true)}
-                                  >
-                                    <span className="text-[12px] text-accent truncate pr-4">
-                                      {chat}
-                                    </span>
-                                    <MoreHorizontal
-                                      size={25}
-                                      className="text-accent transition-opacity"
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-                    )}
+                              {/* Accordion Content for History List */}
+                              <AccordionContent className="pt-1 pb-0 h-38 border-none overflow-y-auto hide-scrollbar">
+                                <div className="space-y-1 mt-1">
+                                  {recentChats.slice(0, 4).map((chat, i) => (
+                                    <div
+                                      key={i}
+                                      className="group relative flex items-center justify-between px-3 py-1 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors"
+                                    >
+                                      <span className="text-[12px] text-accent truncate pr-4">
+                                        {chat}
+                                      </span>
+                                      <MoreHorizontal
+                                        size={25}
+                                        className="text-accent transition-opacity"
+                                      />
+                                    </div>
+                                  ))}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        </div>
+                      )}
 
-                    {/* Dusre items ke liye default sub-items */}
-                    {item.type !== "chat" &&
-                      item.subItems.map((sub, i) => (
-                        <button
-                          key={i}
-                          className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
-                        >
-                          {sub}
-                        </button>
-                      ))}
-                  </div>
-                </AccordionContent>
+                      {/* Dusre items ke liye default sub-items */}
+                      {item.type !== "chat" &&
+                        item.subItems?.map((sub, i) => (
+                          <button
+                            key={i}
+                            onClick={()=> handleTabClick(sub)}
+                            className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
+                          >
+                            {sub.label}
+                          </button>
+                        ))}
+                    </div>
+                  </AccordionContent>
+                )}
               </AccordionItem>
             );
           })}

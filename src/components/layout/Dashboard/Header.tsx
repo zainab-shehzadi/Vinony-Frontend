@@ -24,7 +24,8 @@ interface IProp {
 export default function Header({ setToggle, toggle }: IProp) {
   return (
     <>
-      <header className="h-16 w-full border-b flex items-center justify-between px-4 lg:px-6 sticky top-0 z-50">
+      <header className="h-16 w-full border-b border-border flex items-center justify-between px-4 lg:px-6 sticky top-0">
+        {/* Left Side: Workspace Title & Mobile Menu */}
         <div className="flex items-center gap-4">
           <div
             className="lg:hidden cursor-pointer font-semibold text-xl text-primaryDark"

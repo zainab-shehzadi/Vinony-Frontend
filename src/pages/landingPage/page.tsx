@@ -60,7 +60,7 @@ export default function LandingPage() {
       </Container>
 
       <div className="lg:pt-10 xl:pt-16">
-        <ModelsShowcase onCtaClick={() => console.log("Explore models")} />;
+        <ModelsShowcase onCtaClick={() => navigate("/ai-models")} />;
       </div>
 
       <Container>

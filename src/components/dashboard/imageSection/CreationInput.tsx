@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { CircleDollarSign, Paperclip, Plus } from "lucide-react";
+import { ModelConfig } from "@/constants/aiModelData";
 import {
   Paperclip,
   CircleDollarSign,
@@ -18,7 +20,7 @@ export default function CreationInput() {
         {/* Upper Part: Input and Paperclip */}
         <div className="flex items-start w-full gap-3 px-3 py-2">
           <label className="mt-2 cursor-pointer hover:opacity-70 transition-opacity">
-            <Paperclip size={20} className="text-primaryDark" />
+            <Paperclip size={20} className="text-foreground" />
             <input type="file" className="hidden" />
           </label>
 
@@ -31,13 +33,41 @@ export default function CreationInput() {
         </div>
 
         {/* Lower Part: Actions and Generate Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 px-2 pb-1">
+        <div className="flex sm:flex-row items-center justify-between gap-4 mt-2 px-2 pb-1">
           {/* Action Buttons Group */}
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
-            <ActionButton icon={<Paperclip size={18} />} label="Attach" />
-            <ActionButton icon={<img src={style}/>} label="Style" />
-            <ActionButton icon={<Hd size={18} />} label="Quality" />
-            <ActionButton icon={<img src={ratio}/>} label="Aspect Ratio" />
+          <div className="flex sm:hidden items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="bg-card text-foreground rounded-full w-8 h-8 hover:bg-slate-50 ">
+                  <Plus size={20} strokeWidth={3} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-background border border-border rounded-lg p-2 z-50">
+                {Actions.map((action, index) => (
+                  <>
+                  <DropdownMenuItem className="py-1">
+                    <ActionButton
+                      icon={action.icon}
+                      label={action.baseLabel}
+                      menu={action.menu ?? []}
+                      key={index}
+                    />
+                  </DropdownMenuItem>
+                  <hr className="border border-border"/>
+                  </>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="hidden sm:flex items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
+            {Actions.map((action, index) => (
+              <ActionButton
+                icon={action.icon}
+                label={action.baseLabel}
+                menu={action.menu ?? []}
+                key={index}
+              />
+            ))}
           </div>
 
           {/* Generate Button */}

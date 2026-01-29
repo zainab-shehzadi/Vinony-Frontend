@@ -6,6 +6,52 @@ import nanoImage1 from "@/assets/G1.png";
 import nanoImage2 from "@/assets/G2.png";
 import nanoImage3 from "@/assets/G3.png";
 
+import deepseek from "@/assets/deepseek.svg";
+import gemini from "@/assets/gemini.svg";
+
+// import unikorn from "@/assets/unikorn.svg";
+// import seedream from "@/assets/seedream.svg";
+import ideogram from "@/assets/ideogram.svg";
+
+import veo from "@/assets/veo.svg";
+import sora from "@/assets/sora.svg";
+import kling from "@/assets/kling.svg";
+import seedance from "@/assets/seedance.svg";
+import wan from "@/assets/wan.svg";
+import runway from "@/assets/runway.svg";
+
+interface IconProps {
+  path: string | string[]; // Single path ya array of paths
+  className?: string;
+  size?: number;
+}
+
+const Icons = ({ path, className, size = 20 }: IconProps) => {
+  const pathArray = Array.isArray(path) ? path : [path];
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {pathArray.map((d, index) => (
+        <path
+          key={index}
+          d={d}
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ))}
+    </svg>
+  );
+};
+
 export interface ModelConfig {
   id: string;
   baseLabel: string;
@@ -70,7 +116,7 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   {
     id: "seedream",
     baseLabel: "Seedream",
-    icon: <Zap size={16} className="text-primaryDark" />,
+    icon: <Zap size={16} className="text-foreground" />,
   },
   {
     id: "flux",
@@ -90,8 +136,47 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   },
 ];
 
-
-
+export const AI_VIDEO_MODELS: ModelConfig[] = [
+  {
+    id: "veo",
+    baseLabel: "Veo",
+    icon: <img src={veo} width={25} height={25} className="text-foreground" />,
+    versions: ["3.1 R1", "2.0", "Light"],
+  },
+  {
+    id: "sora",
+    baseLabel: "Sora 2",
+    icon: <img src={sora} width={25} height={25} />,
+  },
+  {
+    id: "kling",
+    baseLabel: "Kling",
+    icon: <img src={kling} width={20} height={20} />,
+    versions: ["Pro", "2.0 Standard"],
+  },
+  {
+    id: "seedance",
+    baseLabel: "Seedance",
+    icon: <img src={seedance} width={30} height={30} />,
+    versions: ["V1", "Motion 2.0", "Anime-HD", "Cinematic"],
+  },
+  {
+    id: "wan",
+    baseLabel: "Wan",
+    icon: <img src={wan} width={35} height={35} />,
+    versions: ["2.6", "2.1 Pro", "2.0"],
+  },
+  {
+    id: "runway",
+    baseLabel: "Runway",
+    icon: <img src={runway} width={30} height={30} />,
+  },
+  {
+    id: "all",
+    baseLabel: "All",
+    icon: <Search size={16} className="text-foreground" />,
+  },
+];
 
 export const GENERATED_GROUPS = [
   {
