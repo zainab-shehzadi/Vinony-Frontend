@@ -5,7 +5,6 @@ type Props = {
   title?: string;
   providers?: AiProvider[];
   className?: string;
-  /** seconds for one full loop */
   durationSec?: number;
 };
 
@@ -78,7 +77,7 @@ export default function LeadingAiProviders({
 
   return (
     <section className={["w-full", className ?? ""].join(" ")}>
-      <div>
+      <div className="mt-6 lg:mt-0"> 
         <h3 className="text-center text-xl md:text-[32px] font-semibold dark:text-primary">
           {title}
         </h3>
