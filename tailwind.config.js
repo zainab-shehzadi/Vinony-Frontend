@@ -26,9 +26,7 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-          soft: "hsl(var(--card-soft)/ <alpha-value>)",
         },
-
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -41,7 +39,6 @@ export default {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          bg: "hsl(var(--secondary-bg))",
         },
 
         muted: {

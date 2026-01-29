@@ -32,8 +32,14 @@ const PasswordField = React.forwardRef<HTMLInputElement, Props>(
             variant="ghost"
             size="icon"
             onClick={() => setShow((s) => !s)}
-            className="absolute right-1 top-1/2 -translate-y-1/2 text-black hover:text-gray-700"
+            className={cn(
+              "absolute right-1 top-1/2 -translate-y-1/2",
+              "text-muted-foreground hover:text-foreground",
+              "dark:text-white dark:hover:text-white",
+              "hover:bg-transparent focus-visible:ring-0"
+            )}
             aria-label={show ? "Hide password" : "Show password"}
+            aria-pressed={show}
           >
             {show ? <EyeOff size={24} /> : <Eye size={24} />}
           </Button>

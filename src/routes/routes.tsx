@@ -18,10 +18,6 @@ import ModelDetailPage from "@/pages/aIModels/ ModelDetailPage";
 import NotFound from "@/pages/notFound";
 import TermAndCondition from "@/pages/legal/TermsAndConditions";
 import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
-import VideoSection from "@/pages/dashboard/videos/VideoSection";
-import AgentSection from "@/pages/dashboard/agents/AgentSection";
-import BillingSection from "@/pages/dashboard/billings/BillingSection";
-import SettingSection from "@/pages/dashboard/settings/SettingSection";
 
 
 export const routes: RouteObject[] = [
@@ -52,10 +48,8 @@ export const routes: RouteObject[] = [
         children: [
           { path: PATH.CHAT, element: <Chat/> },
           { path: PATH.IMAGE, element: <ImageSection/> },
-          { path: PATH.VIDEO, element: <VideoSection /> },
-          { path: PATH.AGENT, element: <AgentSection /> },
-          { path: PATH.BILLING, element: <BillingSection /> },
-          { path: PATH.SETTING, element: <SettingSection /> },
+          { path: "/dashboard", element: <Chat /> },
+          // { path: "/dashboard/profile", element: <Profile /> },
         ],
       },
     ],

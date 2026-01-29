@@ -1,4 +1,4 @@
-import { Image, MessageSquare, Receipt, Settings, Users, Video } from "lucide-react";
+import { Image, MessageSquare, Users, Video } from "lucide-react";
 import { PATH } from "./paths";
 
 
@@ -19,27 +19,11 @@ export const menuItems = [
   {
     title: "Videos",
     icon: <Video className="w-5 h-5" />,
-    path: PATH.VIDEO,
-    subItems: [
-      { id: "video-creations", label: "My Creations", view: "video-history" },
-    ],
+    subItems: ["My Creations"],
   },
   {
     title: "Agents",
     icon: <Users className="w-5 h-5" />,
-    path: PATH.AGENT,
-    subItems: [
-      { id: "my-history", label: "My History", view: "my-history" },
-    ],
-  },
-  {
-    title: "Billings",
-    icon: <Receipt className="w-5 h-5" />,
-    path: PATH.BILLING,
-  },
-  {
-    title: "Settings",
-    icon: <Settings className="w-5 h-5" />,
-    path: PATH.SETTING,
+    subItems: ["My History"],
   },
 ];

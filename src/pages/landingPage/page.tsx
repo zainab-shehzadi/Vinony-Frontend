@@ -33,8 +33,7 @@ export default function LandingPage() {
             { type: "text", value: ".\nOne Subscription." },
           ]}
 
-          subtitle="Access 100+ chat, image, video, and AI agent tools,
-without juggling multiple subscriptions."
+          subtitle="Access 100+ chat, image, video, and AI agent tools, without juggling multiple subscriptions."
         />
         <GetStartedPreview
           imageSrc="/overlay-bg.svg"
@@ -53,9 +52,7 @@ without juggling multiple subscriptions."
         speedSeconds={16}
         pauseOnHover
       />
-
       <Container>
-
         <ModelShowcaseList
           items={MODEL_SHOWCASE}
           onExplore={(id) => console.log("Explore:", id)}
@@ -64,7 +61,6 @@ without juggling multiple subscriptions."
 
       <div className="lg:pt-10 xl:pt-16">
         <ModelsShowcase onCtaClick={() => console.log("Explore models")} />;
-
       </div>
 
       <Container>
