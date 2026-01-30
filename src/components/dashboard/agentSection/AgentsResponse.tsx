@@ -95,7 +95,6 @@ export default function AgentsResponse() {
                   </div>
                 </div>
               ) : (
-                /* User Section */
                 <div className="w-full flex flex-col items-end">
                   <div className="flex gap-3">
                     <div className="mb-2 flex flex-col items-end">
