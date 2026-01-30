@@ -1,4 +1,3 @@
-import React from "react";
 import { Bot, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
@@ -6,13 +5,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {messages} from "@/constants/static-data"
+import { AgentMessages } from "@/constants/static-data";
 
-const ChatResponse: React.FC = () => {
+export default function AgentsResponse() {
   return (
     <div className="min-h-screen bg-background">
       <div className="p-4 mx-auto space-y-8">
-        {messages.map((msg) => {
+        {AgentMessages.map((msg) => {
           const hasVersions = msg.versions && msg.versions.length > 0;
 
           return (
@@ -26,7 +25,7 @@ const ChatResponse: React.FC = () => {
                 <div className="flex w-full gap-3 min-h-[400px]">
                   {/* AI Avatar */}
                   <div className="flex-shrink-0 w-9 h-9 bg-input rounded-full flex items-center justify-center shadow-sm mt-1">
-                    <Bot size={18} className="text-primary" />
+                    {msg.icon}
                   </div>
 
                   <div className="flex-1 space-y-2">
@@ -50,7 +49,7 @@ const ChatResponse: React.FC = () => {
                                 >
                                   {msg.senderName} {v}
                                 </DropdownMenuItem>
-                                <hr className="border border-border"/>
+                                <hr className="border border-border" />
                               </>
                             ))}
                           </DropdownMenuContent>
@@ -98,13 +97,26 @@ const ChatResponse: React.FC = () => {
               ) : (
                 /* User Section */
                 <div className="w-full flex flex-col items-end">
-                  {msg.credit && (
-                    <div className="pr-2 mb-2">
-                      <span className="text-sm font-bold text-primary tracking-tight">
-                        {msg.credit} Credits used
-                      </span>
+                  <div className="flex gap-3">
+                    <div className="mb-2 flex flex-col items-end">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm sm:text-[16px] font-bold">
+                          You
+                        </span>
+                        <span className="text-[12px] sm:text-sm font-normal text-accent">
+                          {msg.time}
+                        </span>
+                      </div>
+                      {msg.credit && (
+                        <span className="text-sm font-bold text-primary tracking-tight">
+                          {msg.credit} Credits used
+                        </span>
+                      )}
                     </div>
-                  )}
+                    <div className="flex-shrink-0 w-9 h-9 bg-input rounded-full flex items-center justify-center shadow-sm mt-1">
+                      {msg.icon}
+                    </div>
+                  </div>
                   <div className="bg-input px-6 py-3 rounded-3xl rounded-tr-none shadow-sm max-w-[85%] text-right">
                     <p className="text-sm md:text-[16px] text-accent">
                       {msg.content}
@@ -118,6 +130,4 @@ const ChatResponse: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default ChatResponse;
+}

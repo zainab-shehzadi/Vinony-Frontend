@@ -28,7 +28,7 @@ const Sidebar = ({
   setActiveView,
   setReqGenerate,
   setReqVideoGenerate,
-  setReqChatGenerate
+  setReqChatGenerate,
 }: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -150,8 +150,8 @@ const Sidebar = ({
                         <button
                           className={`text-[12px] text-accent font-normal hover:text-primary flex items-center gap-1 py-2`}
                           onClick={() => {
-                            setActiveHistory(!activeHistory)
-                            setReqChatGenerate(false)
+                            setActiveHistory(!activeHistory);
+                            setReqChatGenerate(false);
                           }}
                         >
                           New Project
@@ -207,7 +207,7 @@ const Sidebar = ({
                         item.subItems?.map((sub, i) => (
                           <button
                             key={i}
-                            onClick={()=> handleTabClick(sub)}
+                            onClick={() => handleTabClick(sub)}
                             className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
                           >
                             {sub.label}
