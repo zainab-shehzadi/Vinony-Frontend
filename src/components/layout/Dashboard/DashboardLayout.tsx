@@ -9,15 +9,19 @@ export default function DashboardLayout() {
   const [activeView, setActiveView] = useState<String>("");
   const [reqGenerate, setReqGenerate] = useState<Boolean>(false);
   const [reqVideoGenerate, setReqVideoGenerate] = useState<Boolean>(false);
+  const [reqChatGenerate, setReqChatGenerate] = useState<Boolean>(false);
 
   return (
     <>
       <div className="flex h-screen">
         <Sidebar
           toggle={toggle}
+          activeHistory={activeHistory}
           setActiveHistory={setActiveHistory}
           setActiveView={setActiveView}
           setReqGenerate={setReqGenerate}
+          setReqVideoGenerate={setReqVideoGenerate}
+          setReqChatGenerate={setReqChatGenerate}
         />
         {toggle && (
           <div
@@ -28,7 +32,19 @@ export default function DashboardLayout() {
         <div className="flex flex-col flex-1 min-w-0">
           <Header setToggle={setToggle} toggle={toggle} />
           <main className="flex-1 overflow-auto">
-            <Outlet context={{ activeHistory, setActiveHistory, activeView, reqGenerate, setReqGenerate, reqVideoGenerate, setReqVideoGenerate }} />
+            <Outlet
+              context={{
+                activeHistory,
+                setActiveHistory,
+                activeView,
+                reqGenerate,
+                setReqGenerate,
+                reqVideoGenerate,
+                setReqVideoGenerate,
+                reqChatGenerate,
+                setReqChatGenerate,
+              }}
+            />
           </main>
         </div>
       </div>

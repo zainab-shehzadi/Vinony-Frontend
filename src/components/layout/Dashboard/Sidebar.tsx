@@ -13,16 +13,22 @@ import { menuItems } from "@/constants/sideBarData";
 
 interface IProp {
   toggle: boolean;
+  activeHistory: Boolean;
   setActiveHistory: (a: Boolean) => void;
   setActiveView: (a: String) => void;
   setReqGenerate: (a: Boolean) => void;
+  setReqVideoGenerate: (a: Boolean) => void;
+  setReqChatGenerate: (a: Boolean) => void;
 }
 
 const Sidebar = ({
   toggle,
+  activeHistory,
   setActiveHistory,
   setActiveView,
   setReqGenerate,
+  setReqVideoGenerate,
+  setReqChatGenerate
 }: IProp) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,6 +56,22 @@ const Sidebar = ({
   useEffect(() => {
     setActiveAccordion(getActiveAccordion());
   }, [location.pathname]);
+
+  const handleTabClick = (sub) => {
+    setActiveView(sub.view);
+
+    // Differentiate based on view name or label
+    switch (sub.view) {
+      case "video-history":
+        setReqVideoGenerate(false);
+        break;
+      case "image-history":
+        setReqGenerate(false);
+        break;
+      default:
+        null;
+    }
+  };
 
   const hasHistory = recentChats.length > 0;
   const isActive = (path: string) => location.pathname === path;
@@ -127,7 +149,10 @@ const Sidebar = ({
                       {item.type === "chat" && (
                         <button
                           className={`text-[12px] text-accent font-normal hover:text-primary flex items-center gap-1 py-2`}
-                          onClick={() => setActiveHistory(true)}
+                          onClick={() => {
+                            setActiveHistory(!activeHistory)
+                            setReqChatGenerate(false)
+                          }}
                         >
                           New Project
                         </button>
@@ -182,10 +207,7 @@ const Sidebar = ({
                         item.subItems?.map((sub, i) => (
                           <button
                             key={i}
-                            onClick={() => {
-                              setActiveView(sub.view);
-                              setReqGenerate(false);
-                            }}
+                            onClick={()=> handleTabClick(sub)}
                             className="text-[12px] text-accent hover:text-primary text-left py-1.5 transition-colors"
                           >
                             {sub.label}

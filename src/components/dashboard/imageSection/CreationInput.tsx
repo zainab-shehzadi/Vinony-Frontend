@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CircleDollarSign, Plus } from "lucide-react";
+import { CircleDollarSign, Paperclip, Plus } from "lucide-react";
 import { ModelConfig } from "@/constants/aiModelData";
 import {
   DropdownMenu,
@@ -36,8 +36,9 @@ export default function CreationInput({
         className="bg-input rounded-lg p-2 shadow-[inset_0_1px_4px_rgba(0,0,0,0.05)]"
       >
         {/* Upper Part: Input and Paperclip */}
-        <div className="flex items-start w-full px-3 py-2">
+        <div className="flex items-start w-full gap-3 px-3 py-2">
           <label className="mt-2 cursor-pointer hover:opacity-70 transition-opacity">
+            <Paperclip size={20} className="text-foreground" />
             <input type="file" className="hidden" />
           </label>
 
@@ -50,18 +51,19 @@ export default function CreationInput({
         </div>
 
         {/* Lower Part: Actions and Generate Button */}
-        <div className="flex sm:flex-row items-center justify-between gap-4 mt-2 px-3 pb-1">
+        <div className="flex sm:flex-row items-center justify-between gap-4 mt-2 px-2 pb-1">
           {/* Action Buttons Group */}
           <div className="flex sm:hidden items-center gap-4 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="bg-white text-foreground rounded-full w-8 h-8 hover:bg-slate-50 ">
+                <Button className="bg-card text-foreground rounded-full w-8 h-8 hover:bg-slate-50 ">
                   <Plus size={20} strokeWidth={3} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-background border border-border rounded-lg p-2 z-50">
                 {Actions.map((action, index) => (
-                  <DropdownMenuItem>
+                  <>
+                  <DropdownMenuItem className="py-1">
                     <ActionButton
                       icon={action.icon}
                       label={action.baseLabel}
@@ -69,6 +71,8 @@ export default function CreationInput({
                       key={index}
                     />
                   </DropdownMenuItem>
+                  <hr className="border border-border"/>
+                  </>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
@@ -90,7 +94,7 @@ export default function CreationInput({
             type="submit"
             className={`
               flex items-center justify-center gap-2 
-              sm:w-44 px-5 py-2.5 
+              w-full sm:w-44 px-5 py-2.5 
               rounded-xl font-bold transition-all duration-200 whitespace-nowrap
           ${
             inputValue

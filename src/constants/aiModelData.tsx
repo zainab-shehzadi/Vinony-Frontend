@@ -1,4 +1,5 @@
 import {
+  Brain,
   Clock4,
   FileText,
   Globe,
@@ -6,8 +7,9 @@ import {
   Hd,
   Paperclip,
   Search,
-  Sparkles,
-  Wand2,
+  // Sparkles,
+  // Wand2,
+  Zap,
 } from "lucide-react";
 import soraImage1 from "@/assets/17c52441521434f4c2444cb53aad60b06a29e713.png";
 import soraImage2 from "@/assets/4f7f68c012060f5e4375ab6f34883192ca33c2b1.png";
@@ -19,8 +21,8 @@ import nanoImage3 from "@/assets/G3.png";
 import deepseek from "@/assets/deepseek.svg";
 import gemini from "@/assets/gemini.svg";
 
-import unikorn from "@/assets/unikorn.svg";
-import seedream from "@/assets/seedream.svg";
+// import unikorn from "@/assets/unikorn.svg";
+// import seedream from "@/assets/seedream.svg";
 import ideogram from "@/assets/ideogram.svg";
 
 import veo from "@/assets/veo.svg";
@@ -164,7 +166,7 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   {
     id: "unikorn",
     baseLabel: "UniKorn",
-    icon: <img src={unikorn} width={30} height={30} />,
+    icon: <Brain size={16} className="text-[#6881FD]" />,
   },
   {
     id: "nanobanana",
@@ -176,7 +178,7 @@ export const AI_IMAGE_MODELS: ModelConfig[] = [
   {
     id: "seedream",
     baseLabel: "Seedream",
-    icon: <img src={seedream} width={16} height={16} />,
+    icon: <Zap size={16} className="text-foreground" />,
   },
   {
     id: "flux",
@@ -208,7 +210,7 @@ export const AI_VIDEO_MODELS: ModelConfig[] = [
   {
     id: "veo",
     baseLabel: "Veo",
-    icon: <img src={veo} width={25} height={25} className="text-primaryDark" />,
+    icon: <img src={veo} width={25} height={25} className="text-foreground" />,
     versions: ["3.1 R1", "2.0", "Light"],
   },
   {

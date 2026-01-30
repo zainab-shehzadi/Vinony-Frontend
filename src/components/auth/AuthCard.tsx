@@ -9,13 +9,13 @@ type Props = {
 
 export default function AuthCard({ title, subtitle, children }: Props) {
   return (
-    <Card className="w-full max-w-[460px] rounded-lg border bg-white shadow-lg">
+    <Card className="w-full max-w-[460px] rounded-lg border bg-white shadow-lg dark:bg-card border-border">
       <CardHeader className="space-y-2 pt-8">
-        <h1 className="text-center text-xl md:text-[24px] xl:text-3xl font-semibold text-black">{title}</h1>
+        <h1 className="text-center text-[24px] md:text-2xl xl:text-3xl font-semibold text-black dark:text-gradient">{title}</h1>
         {subtitle ? <p className="auth-subtitle md:text-[16px]">{subtitle}</p> : null}
       </CardHeader>
 
-      <CardContent className="pb-4 md:pb-8 ">{children}</CardContent>
+      <CardContent className="pb-4 md:pb-8">{children}</CardContent>
     </Card>
   );
 }

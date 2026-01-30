@@ -24,18 +24,16 @@ export default function ImageSection() {
   );
   return (
     <>
-      <div className="flex w-full flex-col min-h-[90vh]">
-        {activeView !== "image-history" && (
-          <div className="w-full p-4 mx-auto overflow-hidden">
-            <Modelbar
-              models={AI_IMAGE_MODELS}
-              selectedModel={selectedModel}
-              setSelectedModel={setSelectedModel}
-              activeVersion={activeVersion}
-              setActiveVersion={setActiveVersion}
-            />
-          </div>
-        )}
+      <div className="flex w-full flex-col min-h-screen">
+        <div className="w-full max-w-[74rem] mx-auto overflow-hidden">
+          <Modelbar
+            models={AI_IMAGE_MODELS}
+            selectedModel={selectedModel}
+            setSelectedModel={setSelectedModel}
+            activeVersion={activeVersion}
+            setActiveVersion={setActiveVersion}
+          />
+        </div>
 
         <div className="flex-grow overflow-y-auto flex flex-col items-center px-5 py-8 no-scrollbar">
           {activeView !== "image-history" && (

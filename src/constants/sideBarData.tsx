@@ -8,9 +8,7 @@ export const menuItems = [
     icon: <MessageSquare className="w-5 h-5" />,
     path: PATH.CHAT,
     type: "chat",
-    subItems: [
-      { id: "new-project", label: "New Project", view: "new-project" },
-    ],
+    subItems: ["New Project"],
   },
   {
     title: "Images",

@@ -24,10 +24,9 @@ interface IProp {
 export default function Header({ setToggle, toggle }: IProp) {
   return (
     <>
-      <header className="h-16 w-full border-b border-border flex items-center justify-between px-4 lg:px-6 sticky top-0 z-50">
+      <header className="h-16 w-full border-b border-border flex items-center justify-between px-4 lg:px-6 sticky top-0">
         {/* Left Side: Workspace Title & Mobile Menu */}
         <div className="flex items-center gap-4">
-          {/* Mobile Menu Button (Only visible on small screens) */}
           <div
             className="lg:hidden cursor-pointer font-semibold text-xl text-foreground"
             onClick={() => setToggle(!toggle)}
@@ -41,7 +40,6 @@ export default function Header({ setToggle, toggle }: IProp) {
 
         {/* Right Side: Actions & Profile */}
         <div className="flex items-center gap-2 md:gap-4">
-          {/* Credits Pill */}
           <div className="hidden auth-primary-btn h-8 sm:flex sm:items-center gap-1 px-2 py-3 rounded-lg">
             <CircleDollarSign className="w-4 h-4" />
             <span className="text-xs font-semibold">100 +</span>

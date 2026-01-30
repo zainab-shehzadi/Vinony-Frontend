@@ -15,6 +15,20 @@
       var(--btn-grad-to) 100%
     );
   }
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--btn-grad-from) 0%,
+    var(--btn-grad-to) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;            
+  -webkit-text-fill-color: transparent;
+    padding-bottom: 0.06em; /* ✅ tiny extra space for descenders */
+
+}
+
 
   .btn-gradient:hover {
     filter: brightness(0.95);
@@ -34,7 +48,7 @@
   }
 
   .auth-page {
-    @apply w-full flex justify-center px-4 pt-10 lg:pt-20 pb-4;
+    @apply w-full flex justify-center px-6 pt-10 lg:pt-20 pb-4;
   }
 
   .auth-bg {
@@ -62,7 +76,7 @@
   }
 
   .auth-link {
-    @apply text-primary hover:underline;
+    @apply text-primary underline;
   }
 
   .auth-helper {

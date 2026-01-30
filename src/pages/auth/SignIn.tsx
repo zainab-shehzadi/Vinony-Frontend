@@ -63,7 +63,7 @@ export default function SignIn() {
             <Input
               id="email"
               autoComplete="email"
-              placeholder="Enter email"
+              placeholder="Enter your email"
               className={`auth-input ${errors.email ? "border-red-500 focus-visible:ring-red-500" : "placeholder-text-sm"
                 }`}
               {...register("email")}
@@ -88,6 +88,7 @@ export default function SignIn() {
             <PasswordField
               id="password"
               autoComplete="current-password"
+              placeholder="Enter your password"
               {...register("password")}
               error={errors.password?.message}
             />
@@ -107,7 +108,7 @@ export default function SignIn() {
                 });
               }}
             />
-            <Label htmlFor="keepSignedIn" className="text-sm md:text-base leading-5 text-gray-700">
+            <Label htmlFor="keepSignedIn" className="text-sm md:text-base leading-5 text-gray-700 dark:text-white">
               Keep me signed in
             </Label>
           </div>
@@ -131,7 +132,7 @@ export default function SignIn() {
             type="button"
             variant="outline"
             onClick={onGoogle}
-            className="h-10 md:h-12 w-full rounded-xl border border-gray-150 bg-[#F4F5FA99] text-base font-semibold hover:bg-gray-50 hover:text-black"
+            className="h-10 md:h-12 w-full rounded-xl border border-border bg-[#F4F5FA99] dark:bg-card text-base font-semibold hover:bg-gray-50 hover:text-foreground"
           >
             <img
               src="/google.svg"
@@ -142,7 +143,7 @@ export default function SignIn() {
             Continue with Google
           </Button>
 
-          <div className="md:pt-2 text-center text-sm md:text-lg text-gray-700">
+          <div className="md:pt-2 text-center text-sm md:text-lg text-foreground">
             Don&apos;t have an Account?{" "}
             <Link to="/register" className="auth-link text-primary">
               Sign up here
